@@ -81,6 +81,11 @@ ring:
   username: !secret ring_user
   password: !secret ring_pwd
 
+remote:
+  - platform: harmony
+    name: Lounge
+    host: 192.168.1.3
+
 light: !include_dir_list lights/
 sensor: !include_dir_list sensors/
 group: !include groups.yaml

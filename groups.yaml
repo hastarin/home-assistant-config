@@ -16,6 +16,7 @@ switches:
   name: Switches
   entities:
   - switch.air_conditioner
+  - remote.lounge
 
 netatmo_indoor:
   name: Netatmo Indoor
@@ -105,23 +106,25 @@ weather_view:
   - group.office_sensors
   - group.wunderground  
 
-media_view:
-  name: Media Players
+lounge_view:
+  name: Lounge
   view: yes
   entities:
-  - media_player.galaxy_tab_s_105
+  - group.lounge_room
+  - remote.lounge
   - media_player.integra
   - media_player.shield
   - media_player.shield_android_tv
   - media_player.plex
  
-my_default_view:
-  name: My Home
+default_view:
+  name: Home
   view: yes
   entities:
   - device_tracker.devicename
   - group.lights
   - group.switches
+  - media_player.integra
   - group.netatmo_indoor
   - group.netatmo_outdoor
   - group.office_sensors
