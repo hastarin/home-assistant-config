@@ -1,10 +1,4 @@
 intents:
-  greetings:
-    speech: Hi there!
-    async_action: True
-  gettemp:
-    speech: It is currently {{ states('sensor.netatmo_indoor_temperature') }} degrees
-    async_action: True
   smarthome.lights.switch.on:
     async_action: False
     speech: Ok
