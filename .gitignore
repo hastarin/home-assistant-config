@@ -1,0 +1,17 @@
+secrets.yaml
+known_devices.yaml
+tts/
+deps/
+*.db
+*.json
+*.pid
+*.xml
+*.csr
+*.crt
+*.key
+*.conf
+*.json
+*.log
+*.pickle
+*.swp
+.uuid

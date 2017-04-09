@@ -1,0 +1,4 @@
+platform: mqtt
+state_topic: 'office/sensor/humidity'
+name: 'Office Humidity'
+unit_of_measurement: '%'

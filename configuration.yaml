@@ -1,0 +1,87 @@
+homeassistant:
+  name: Home
+  latitude: !secret lat
+  longitude: !secret lon
+  elevation: 73
+  unit_system: metric
+  time_zone: Australia/Melbourne
+
+frontend:
+
+config:
+
+# NOTE: Using nginx to front this
+# https://home-assistant.io/docs/ecosystem/nginx/
+http:
+  api_password: !secret http_password
+
+updater:
+
+discovery:
+
+conversation:
+
+history:
+
+recorder:
+  purge_days: 7
+
+logbook:
+
+logger:
+  default: info
+
+ifttt:
+  key: !secret ifttt_api
+
+sun:
+
+tts:
+  platform: google
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  client_id: home-assistant-1
+  username: !secret mqtt_username
+  password: !secret mqtt_pwd
+
+media_player:
+  - platform: plex
+    host: 192.168.1.20
+  - platform: onkyo
+    host: 192.168.1.8
+    name: Integra
+    sources:
+      video1: "XBox"
+      video2: "PS4"
+      video3: "nVidia"
+      video4: "OUYA"
+      video5: "PC"
+
+emulated_hue:
+  expose_by_default: true
+  exposed_domains:
+    - light
+
+device_tracker:
+  - platform: netgear
+    host: 192.168.1.1
+    username: admin
+    password: !secret netgear_pwd
+    track_new_devices: false
+
+netatmo:
+  api_key: !secret netatmo_api_key
+  secret_key: !secret netatmo_secret_key
+  username: !secret netatmo_user
+  password: !secret netatmo_pwd
+
+ring:
+  username: !secret ring_user
+  password: !secret ring_pwd
+
+light: !include_dir_list lights/
+sensor: !include_dir_list sensors/
+group: !include groups.yaml
+

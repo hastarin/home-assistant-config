@@ -1,0 +1,25 @@
+platform: wunderground
+api_key: !secret wunderground_key
+monitored_conditions:
+  - alerts
+  - dewpoint_c
+  - feelslike_c
+  - heat_index_c
+  - elevation
+  - location
+  - observation_time
+  - precip_1hr_metric
+  - precip_today_metric
+  - pressure_mb
+  - pressure_trend
+  - relative_humidity
+  - station_id
+  - solarradiation
+  - temp_c
+  - UV
+  - visibility_km
+  - weather
+  - wind_degrees
+  - wind_dir
+  - wind_gust_kph
+  - wind_kph
