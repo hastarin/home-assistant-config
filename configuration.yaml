@@ -70,6 +70,8 @@ device_tracker:
     username: admin
     password: !secret netgear_pwd
     track_new_devices: false
+  - platform: owntracks
+
 
 netatmo:
   api_key: !secret netatmo_api_key
@@ -88,6 +90,7 @@ remote:
 
 light: !include_dir_list lights/
 sensor: !include_dir_list sensors/
+zone: !include_dir_list zones/
 group: !include groups.yaml
 
 apiai: !include apiai.yaml
