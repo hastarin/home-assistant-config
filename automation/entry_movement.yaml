@@ -10,7 +10,7 @@
       entity_id: sun.sun
       state: "below_horizon"
     - condition: state
-      entity_id: input_boolean.motion_lockout
+      entity_id: input_boolean.disable_auto_motion
       state: "off"
   action:
     service: script.motion_entry

@@ -6,6 +6,7 @@ homeassistant:
   unit_system: metric
   time_zone: Australia/Melbourne
   customize: !include misc/customize.yaml
+  packages: !include_dir_named packages/
 
 frontend:
 
@@ -27,10 +28,10 @@ history:
 recorder:
   purge_days: 7
 
-logbook:
+logbook: !include_dir_merge_named logbook/
 
 logger:
-  default: info
+  default: warn
 
 ifttt:
   key: !secret ifttt_api
@@ -90,22 +91,12 @@ zwave:
   device_config: !include zwave_device_config.yaml
 
 apiai: !include apiai.yaml
-light: !include_dir_list lights/
 sensor: !include_dir_list sensors/
 zone: !include_dir_list zones/
-
 group: !include groups.yaml
-
-remote:
-  - platform: harmony
-    name: Living Room
-    host: 192.168.1.3
-    activity: 22486705
 
 script: !include_dir_merge_named scripts/
 automation: !include_dir_merge_list automation/
-input_select: !include inputs/selects.yaml
-input_boolean: !include inputs/booleans.yaml
 
 switch:
   - platform: wake_on_lan

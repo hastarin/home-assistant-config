@@ -6,7 +6,7 @@ lights:
   - light.entry
   - light.guestroom
   - light.hall
-  - group.lounge_room
+  - group.living_room
   - light.lounge_front
   - light.lounge_rear
   - light.office
@@ -16,7 +16,13 @@ switches:
   name: Switches
   entities:
   - switch.air_conditioner
-  - remote.lounge
+
+overrides:
+  name: Disable
+  entities: 
+  - input_boolean.disable_auto_lights
+  - input_boolean.disable_auto_motion
+  - input_boolean.disable_auto_presence
 
 netatmo_indoor:
   name: Netatmo Indoor
@@ -70,14 +76,15 @@ wunderground:
   - sensor.pws_uv
   - sensor.pws_wind_degrees
 
-lounge_room:
-  name: Lounge Room
+living_room:
+  name: Living Room
   entities:
   - light.lounge_front
   - light.lounge_rear
 
 bedroom:
   name: Bedroom
+  icon: mdi:hotel
   view: true
   entities:
   - light.bedroom
@@ -93,30 +100,40 @@ office_sensors:
 office_view:
   name: Office
   view: true
+  icon: mdi:desktop-mac
   entities:
   - light.office
   - switch.wake_on_lan
   - group.office_sensors
+
+harmony:
+  name: Harmony
+  entities:
+  - sensor.living_room_activity
+  - input_select.harmony
   
+living_room_view:
+  name: Living Room
+  icon: mdi:sofa
+  view: yes
+  entities:
+  - group.living_room
+  - group.harmony
+  - media_player.integra
+  - media_player.shield
+  - media_player.shield_android_tv
+  - media_player.plex
+  - media_player.blackmagic
+
 weather_view:
   name: Weather
+  icon: mdi:cloud
   view: yes
   entities:
   - group.netatmo_outdoor
   - group.netatmo_indoor
   - group.office_sensors
   - group.wunderground  
-
-lounge_view:
-  name: Lounge
-  view: yes
-  entities:
-  - group.lounge_room
-  - input_select.harmony
-  - media_player.integra
-  - media_player.shield
-  - media_player.shield_android_tv
-  - media_player.plex
 
 aeotec_multisensor_card_1:
   name: Aeotec Multisensor
@@ -130,12 +147,14 @@ aeotec_multisensor_card_1:
 
 default_view:
   name: Home
+  icon: mdi:home
   view: yes
   entities:
   - device_tracker.jon_mobile
   - group.lights
   - group.switches
-  - input_select.harmony
+  - group.overrides
+  - group.harmony
   - media_player.integra
   - group.netatmo_indoor
   - group.netatmo_outdoor

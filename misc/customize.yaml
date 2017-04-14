@@ -3,7 +3,9 @@
       icon: mdi:monitor
     switch.garage_light_switch:
       friendly_name: Garage Light
-      icon: mdi:lightbulb
+      icon: mdi:white-balance-iridescent
     switch.air_conditioner:
       friendly_name: Air Conditioner
       icon: mdi:snowflake
+    sensor.office_humidity:
+      icon: mdi:water-percent

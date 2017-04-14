@@ -1,0 +1,14 @@
+input_boolean:
+  disable_auto_lights:
+    name: Lights Automations
+    initial: off
+    icon: mdi:lightbulb
+  disable_auto_motion:
+    name: Motion Automations
+    initial: off
+    icon: mdi:run
+  disable_auto_presence:
+    name: Presence Automations
+    initial: off
+    icon: mdi:home-map-marker
+

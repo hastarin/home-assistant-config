@@ -1,0 +1,81 @@
+remote:
+  - platform: harmony
+    name: Living Room
+    host: 192.168.1.3
+    activity: 22486705
+    scan_interval: 5
+
+sensor:
+  - platform: template
+    sensors:
+      living_room_activity:
+        value_template: '{{ states.remote.living_room.attributes.current_activity }}'
+        friendly_name: "Living Room Activity"
+
+input_select:
+  harmony:
+    name: Harmony Control
+    options:
+### DO NOT REMOVE 'SELECT INPUT'
+      - Select Input
+      - nVidia Shield
+      - Play XBox One
+      - Control PS4
+      - Power Off
+    icon: mdi:monitor
+ 
+automation:
+  - alias: Harmony Activity
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony
+      from: 'Select Input'
+    action:
+      - service: remote.turn_on
+        entity_id: remote.living_room
+        data_template:
+          activity: >
+            {% if is_state("input_select.harmony", "nVidia Shield") %}
+              22486705
+            {% elif is_state("input_select.harmony", "Play XBox One") %}
+              6761513
+            {% elif is_state("input_select.harmony", "Control PS4") %}
+              15118032
+            {% else %}
+            {% endif %}
+      - service: input_select.select_option
+        entity_id: input_select.harmony
+        data_template:
+          option: "Select Input"
+
+  - alias: Harmony Off
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: input_select.harmony
+      to: 'Power Off'
+    action:
+      - service: remote.turn_off
+        entity_id: remote.living_room
+      - service: input_select.select_option
+        entity_id: input_select.harmony
+        data_template:
+          option: "Select Input" 
+
+  - alias: Living Room Lights On
+    trigger:
+      platform: state
+      entity_id: remote.living_room
+    condition:
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"
+      - condition: state
+        entity_id: input_boolean.disable_auto_lights
+        state: "off"
+      - condition: template
+        value_template: '{{ trigger.to_state.attributes.current_activity == "PowerOff" }}'
+    action:
+      - service: scene.turn_on
+        entity_id: scene.living_room_read

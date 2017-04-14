@@ -1,3 +1,4 @@
+# https://home-assistant.io/components/logbook/
 include:
   domains:
     - homeassistant
@@ -36,3 +37,4 @@ exclude:
     - sensor.pws_wind_degrees
     - sensor.pws_wind_dir
     - sensor.pws_wind_gust_kph
+    - sensor.time
