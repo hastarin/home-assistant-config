@@ -66,7 +66,8 @@ automation:
   - alias: Living Room Lights On
     trigger:
       platform: state
-      entity_id: remote.living_room
+      entity_id: sensor.living_room_activity
+      to: 'PowerOff'
     condition:
       - condition: state
         entity_id: sun.sun
@@ -74,8 +75,6 @@ automation:
       - condition: state
         entity_id: input_boolean.disable_auto_lights
         state: "off"
-      - condition: template
-        value_template: '{{ trigger.to_state.attributes.current_activity == "PowerOff" }}'
     action:
       - service: scene.turn_on
         entity_id: scene.living_room_read

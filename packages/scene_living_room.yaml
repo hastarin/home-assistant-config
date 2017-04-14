@@ -1,40 +1,42 @@
 scene:
   - name: Living Room Off
     entities:
-      switch.lounge_rear:
+      light.lounge_rear:
         state: off
         transition: 2
-      switch.lounge_front:
+      light.lounge_front:
         state: off
         transition: 2
 
   - name: Living Room Normal
     entities:
-      switch.lounge_rear:
+      light.lounge_rear:
         state: on
         transition: 2
         brightness: 255
-      switch.lounge_front:
+      light.lounge_front:
         state: on
         transition: 2
         brightness: 255
 
   - name: Living Room Read
     entities:
-      switch.lounge_rear:
+      light.lounge_rear:
         state: on
         transition: 2
         brightness: 125
-      switch.lounge_front:
+        color_temp: 500
+      light.lounge_front:
         state: off
         transition: 2
 
   - name: Living Room Dim
     entities:
-      switch.lounge_rear:
+      light.lounge_rear:
         state: on
         transition: 2
         brightness: 5
-      switch.lounge_front:
+        color_temp: 500
+      light.lounge_front:
         state: off
         transition: 2

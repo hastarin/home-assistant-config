@@ -9,6 +9,7 @@ include:
     - switch
     - light
     - sensor
+    - scene
 
 exclude:
   domains:
