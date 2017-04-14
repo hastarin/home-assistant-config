@@ -1,0 +1,16 @@
+- alias: "entry movement night"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.aeotec_multisensor_motion_template_1
+      state: "motion detected"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"
+    - condition: state
+      entity_id: input_boolean.motion_lockout
+      state: "off"
+  action:
+    service: script.motion_entry

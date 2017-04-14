@@ -1,0 +1,15 @@
+motion_entry:
+  sequence:
+  - service: script.turn_off
+    data:
+      entity_id: script.motion_entry_timer
+  - service: light.turn_on
+    data:
+      entity_id:
+        - light.entry
+      brightness: 50
+      color_temp: 500
+      transition: 4
+  - service: script.turn_on
+    data:
+      entity_id: script.motion_entry_timer

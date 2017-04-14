@@ -1,0 +1,23 @@
+motion_lockout:
+  name: Motion Automations
+  initial: off
+  icon: mdi:run
+media_lockout:
+  name: Media Automations
+  initial: off
+  icon: mdi:TV
+sleep_lockout:
+  name: Sleep Automations
+  initial: off
+  icon: mdi:bed
+presence_lockout:
+  name: Presence Automations
+  initial: off
+  icon: mdi:house
+ha_uptime:
+  name: Home Assistant Uptime
+  initial: on
+presence_armed:
+  name: Presence Armed
+  initial: off
+

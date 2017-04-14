@@ -1,0 +1,38 @@
+include:
+  domains:
+    - homeassistant
+    - updater
+    - sun
+    - media_player
+    - alarm_control_panel
+    - switch
+    - light
+    - sensor
+
+exclude:
+  domains:
+    - remote
+    - device_tracker
+    - automation
+    - group
+  entities:
+    - sensor.pws_observation_time
+    - sensor.pws_alerts
+    - sensor.pws_dewpoint_c
+    - sensor.pws_feelslike_c
+    - sensor.pws_heat_index_c
+    - sensor.pws_elevation
+    - sensor.pws_location
+    - sensor.pws_observation_time
+    - sensor.pws_pressure_mb
+    - sensor.pws_pressure_trend
+    - sensor.pws_relative_humidity
+    - sensor.pws_station_id
+    - sensor.pws_solarradiation
+    - sensor.pws_temp_c
+    - sensor.pws_UV
+    - sensor.pws_visibility_km
+    - sensor.pws_weather
+    - sensor.pws_wind_degrees
+    - sensor.pws_wind_dir
+    - sensor.pws_wind_gust_kph

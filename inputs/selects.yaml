@@ -1,0 +1,10 @@
+  harmony:
+    name: Harmony Control
+    options:
+### DO NOT REMOVE 'SELECT INPUT'
+      - Select Input
+      - nVidia Shield
+      - Play XBox One
+      - Control PS4
+      - Power Off
+    icon: mdi:monitor

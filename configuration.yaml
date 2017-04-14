@@ -38,7 +38,7 @@ ifttt:
 sun:
 
 tts:
-  platform: google
+  - platform: google
 
 mqtt:
   broker: !secret mqtt_broker
