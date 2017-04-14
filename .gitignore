@@ -3,6 +3,7 @@ known_devices.yaml
 tts/
 deps/
 *.db
+*.db-*
 *.json
 *.pid
 *.xml
@@ -15,3 +16,5 @@ deps/
 *.pickle
 *.swp
 .uuid
+OZW_Log.txt
+pyozw.sqlite

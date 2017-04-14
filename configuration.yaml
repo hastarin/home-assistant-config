@@ -5,6 +5,7 @@ homeassistant:
   elevation: 73
   unit_system: metric
   time_zone: Australia/Melbourne
+  customize: !include misc/customize.yaml
 
 frontend:
 
@@ -65,12 +66,12 @@ emulated_hue:
     - light
 
 device_tracker:
+  - platform: owntracks
   - platform: netgear
     host: 192.168.1.1
     username: admin
     password: !secret netgear_pwd
     track_new_devices: false
-  - platform: owntracks
 
 
 netatmo:
@@ -83,14 +84,30 @@ ring:
   username: !secret ring_user
   password: !secret ring_pwd
 
-remote:
-  - platform: harmony
-    name: Lounge
-    host: 192.168.1.3
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /srv/homeassistant/src/python-openzwave/openzwave/config 
+  device_config: !include zwave_device_config.yaml
 
+apiai: !include apiai.yaml
 light: !include_dir_list lights/
 sensor: !include_dir_list sensors/
 zone: !include_dir_list zones/
+
 group: !include groups.yaml
 
-apiai: !include apiai.yaml
+remote:
+  - platform: harmony
+    name: Living Room
+    host: 192.168.1.3
+    activity: 22486705
+
+script: !include_dir_merge_named scripts/
+automation: !include_dir_merge_list automation/
+input_select: !include inputs/selects.yaml
+input_boolean: !include inputs/booleans.yaml
+
+switch:
+  - platform: wake_on_lan
+    mac_address: !secret pc_mac
+    host: !secret pc_ip

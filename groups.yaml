@@ -95,6 +95,7 @@ office_view:
   view: true
   entities:
   - light.office
+  - switch.wake_on_lan
   - group.office_sensors
   
 weather_view:
@@ -111,21 +112,33 @@ lounge_view:
   view: yes
   entities:
   - group.lounge_room
-  - remote.lounge
+  - input_select.harmony
   - media_player.integra
   - media_player.shield
   - media_player.shield_android_tv
   - media_player.plex
- 
+
+aeotec_multisensor_card_1:
+  name: Aeotec Multisensor
+  entities:
+  - sensor.aeotec_zw100_multisensor_6_burglar_3_10
+  - sensor.aeotec_multisensor_motion_template_1
+  - sensor.aeotec_zw100_multisensor_6_luminance_3_3
+  - sensor.aeotec_zw100_multisensor_6_relative_humidity_3_5
+  - sensor.aeotec_zw100_multisensor_6_temperature_3_1
+  - sensor.aeotec_zw100_multisensor_6_ultraviolet_3_27 
+
 default_view:
   name: Home
   view: yes
   entities:
-  - device_tracker.devicename
+  - device_tracker.jon_mobile
   - group.lights
   - group.switches
+  - input_select.harmony
   - media_player.integra
   - group.netatmo_indoor
   - group.netatmo_outdoor
   - group.office_sensors
   - group.ring
+  - group.aeotec_multisensor_card_1
