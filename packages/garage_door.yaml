@@ -1,0 +1,25 @@
+binary_sensor:
+  - platform: mqtt
+    name: "Garage Door"
+    state_topic: "garage/door/binary"
+    device_class: opening
+
+switch:
+  - platform: mqtt
+    name: "Garage Door"
+    state_topic: "garage/door/binary"
+    command_topic: "garage/door/switch"
+    retain: false
+
+sensor:
+  - platform: mqtt
+    name: "Garage Door State"
+    state_topic: "garage/door/state"
+  - platform: mqtt
+    name: "Garage Door Status"
+    state_topic: "garage/door/status"
+
+homeassistant:
+  customize:
+    switch.garage_door:
+      icon: mdi:garage-open
