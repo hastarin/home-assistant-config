@@ -160,12 +160,18 @@ aeotec_multisensor_card_1:
   - sensor.aeotec_zw100_multisensor_6_temperature_3_1
   - sensor.aeotec_zw100_multisensor_6_ultraviolet_3_27 
 
+jon:
+  name: Jon
+  entities:
+  - device_tracker.jon_mobile
+  - binary_sensor.jon_sleeping
+  
 default_view:
   name: Home
   icon: mdi:home
   view: yes
   entities:
-  - device_tracker.jon_mobile
+  - group.jon
   - group.lights
   - group.switches
   - group.overrides

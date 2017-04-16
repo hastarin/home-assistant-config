@@ -33,13 +33,13 @@ logbook: !include_dir_merge_named logbook/
 logger:
   default: warn
 
-ifttt:
-  key: !secret ifttt_api
-
 sun:
 
 tts:
   - platform: google
+
+ifttt:
+  key: !secret ifttt_api
 
 mqtt:
   broker: !secret mqtt_broker
@@ -48,19 +48,6 @@ mqtt:
   username: !secret mqtt_username
   password: !secret mqtt_pwd
 
-media_player:
-  - platform: plex
-    host: 192.168.1.20
-  - platform: onkyo
-    host: 192.168.1.8
-    name: Integra
-    sources:
-      video1: "XBox"
-      video2: "PS4"
-      video3: "nVidia"
-      video4: "OUYA"
-      video5: "PC"
-
 emulated_hue:
   expose_by_default: true
   exposed_domains:
@@ -68,18 +55,6 @@ emulated_hue:
 
 device_tracker:
   - platform: owntracks
-  - platform: netgear
-    host: 192.168.1.1
-    username: admin
-    password: !secret netgear_pwd
-    track_new_devices: false
-
-
-netatmo:
-  api_key: !secret netatmo_api_key
-  secret_key: !secret netatmo_secret_key
-  username: !secret netatmo_user
-  password: !secret netatmo_pwd
 
 ring:
   username: !secret ring_user
@@ -90,15 +65,9 @@ zwave:
   config_path: /srv/homeassistant/src/python-openzwave/openzwave/config 
   device_config: !include zwave_device_config.yaml
 
-apiai: !include apiai.yaml
 sensor: !include_dir_list sensors/
 zone: !include_dir_list zones/
 group: !include groups.yaml
 
 script: !include_dir_merge_named scripts/
 automation: !include_dir_merge_list automation/
-
-switch:
-  - platform: wake_on_lan
-    mac_address: !secret pc_mac
-    host: !secret pc_ip
