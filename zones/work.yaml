@@ -1,5 +1,5 @@
 name: Work
-latitude: -37.8208298
-longitude: 144.9638573
+latitude: !secret work_lat
+longitude: !secret work_lon
 radius: 200
 icon: mdi:briefcase
