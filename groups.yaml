@@ -105,6 +105,7 @@ bedroom:
   - light.bedroom
   - switch.air_conditioner
   - group.netatmo_indoor
+  - group.jon
 
 office_sensors:
   name: Office Sensors
