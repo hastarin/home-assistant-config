@@ -55,11 +55,11 @@ emulated_hue:
 
 device_tracker:
   - platform: owntracks
-  - platform: netgear
-    host: 192.168.1.1
-    username: admin
-    password: !secret netgear_pwd
-    track_new_devices: false
+#  - platform: netgear
+#    host: 192.168.1.1
+#    username: admin
+#    password: !secret netgear_pwd
+#    track_new_devices: false
 
 ring:
   username: !secret ring_user

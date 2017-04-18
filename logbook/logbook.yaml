@@ -10,10 +10,10 @@ include:
     - light
     - sensor
     - scene
+    - remote
 
 exclude:
   domains:
-    - remote
     - device_tracker
     - automation
     - group
