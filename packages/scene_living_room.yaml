@@ -3,40 +3,32 @@ scene:
     entities:
       light.lounge_rear:
         state: off
-        transition: 2
       light.lounge_front:
         state: off
-        transition: 2
 
   - name: Living Room Normal
     entities:
       light.lounge_rear:
         state: on
-        transition: 2
         brightness: 255
       light.lounge_front:
         state: on
-        transition: 2
         brightness: 255
 
   - name: Living Room Read
     entities:
       light.lounge_rear:
         state: on
-        transition: 2
         brightness: 125
         color_temp: 500
       light.lounge_front:
         state: off
-        transition: 2
 
   - name: Living Room Dim
     entities:
       light.lounge_rear:
         state: on
-        transition: 2
         brightness: 5
         color_temp: 500
       light.lounge_front:
         state: off
-        transition: 2
