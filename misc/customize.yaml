@@ -7,5 +7,3 @@
     switch.air_conditioner:
       friendly_name: Air Conditioner
       icon: mdi:snowflake
-    sensor.office_humidity:
-      icon: mdi:water-percent

@@ -18,13 +18,43 @@ apiai:
       async_action: False
       speech: >
         {% if room is defined and room != "" %}
-        {% for state in states.sensor if (state.name | lower).find('temp') != -1 and (state.name | lower).find(room) != -1 -%}
-          {%- if loop.first -%}
-            It is {{ state.state }} degrees in the {{ room }}.
-          {%- endif -%}
-        {%- else -%}  
-        It is {{ states('sensor.netatmo_indoor_temperature') }} degrees.
-        {%- endfor %}
+          {% for state in states.sensor if (state.name | lower).find('temp') != -1 and (state.name | lower).find(room) != -1 -%}
+            {%- if loop.first -%}
+              It is {{ state.state }} degrees in the {{ room }}.
+            {%- endif -%}
+          {%- else -%}  
+            It is {{ states('sensor.netatmo_indoor_temperature') }} degrees.
+          {%- endfor %}
         {% else %}
-        It is {{ states('sensor.netatmo_indoor_temperature') }} degrees.
+          It is {{ states('sensor.netatmo_indoor_temperature') }} degrees.
         {% endif %}
+    smarthome.lights.switch.check.on:
+      async_action: False
+      speech: >
+        {% if room is defined and room != "" %}
+          {% for state in states.light if (state.name | lower).find(room) != -1 -%}
+            {%- if loop.first -%}
+              The {{ room }} light is {{ state.state }}.
+            {%- endif -%}
+          {%- else -%}  
+              The lights are {{ states('group.all_lights') }}.
+          {%- endfor %}
+        {% else %}
+            The lights are {{ states('group.all_lights') }}.
+        {% endif %}
+    smarthome.locks.check.open:
+      async_action: False
+      speech: The garage door is {{ states('sensor.garage_door_state') }}.
+    smarthome.locks.check.close:
+      async_action: False
+      speech: The garage door is {{ states('sensor.garage_door_state') }}.
+    smarthome.locks.check:
+      async_action: False
+      speech: The garage door is {{ states('sensor.garage_door_state') }}.
+    smarthome.locks.check.lock:
+      async_action: False
+      speech: The garage door is {{ states('sensor.garage_door_state') }}.
+    smarthome.locks.check.unlock:
+      async_action: False
+      speech: The garage door is {{ states('sensor.garage_door_state') }}.
+
