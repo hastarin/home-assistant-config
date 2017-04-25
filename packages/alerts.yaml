@@ -1,0 +1,13 @@
+alert:
+  garage_door:
+    name: Garage is open
+    entity_id: binary_sensor.garage_door
+    state: 'on'
+    repeat:
+      - 10
+      - 15
+      - 30
+    can_acknowledge: True
+    skip_first: True
+    notifiers:
+      - pb

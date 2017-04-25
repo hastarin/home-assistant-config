@@ -150,9 +150,10 @@ weather_view:
   - group.netatmo_indoor
   - group.office_sensors
   - group.wunderground  
+  - group.entry_sensors
 
-aeotec_multisensor_card_1:
-  name: Entry Multisensor
+entry_sensors:
+  name: Entry Sensors
   entities:
   - sensor.aeotec_zw100_multisensor_6_burglar_3_10
   - sensor.aeotec_multisensor_motion_template_1
@@ -183,4 +184,4 @@ default_view:
   - group.netatmo_outdoor
   - group.office_sensors
   - group.ring
-  - group.aeotec_multisensor_card_1
+  - group.entry_sensors
