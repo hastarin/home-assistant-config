@@ -6,4 +6,3 @@ motion_entry_timer:
     data:
       entity_id:
         - light.entry
-      transition: 4

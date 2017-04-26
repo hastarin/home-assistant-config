@@ -1,0 +1,14 @@
+sensor:
+  - platform: nut
+    resources:
+      - ups.status
+      - ups.load
+      - ups.realpower.nominal
+      - battery.charge
+      - battery.runtime
+      - battery.runtime.low
+      - battery.temperature
+      - battery.voltage
+      - battery.voltage.nominal
+      - input.voltage
+      - input.voltage.nominal

@@ -185,3 +185,20 @@ default_view:
   - group.office_sensors
   - group.ring
   - group.entry_sensors
+  - group.ups
+
+ups:
+  name: UPS
+  icon: mdi:battery
+  entities:
+  - sensor.nut_ups_status_data
+  - sensor.nut_ups_load
+  - sensor.nut_ups_nominal_real_power
+  - sensor.nut_ups_battery_charge
+  - sensor.nut_ups_battery_runtime
+  - sensor.nut_ups_low_battery_runtime
+  - sensor.nut_ups_battery_temperature
+  - sensor.nut_ups_battery_voltage
+  - sensor.nut_ups_nominal_battery_voltage
+  - sensor.nut_ups_input_voltage
+  - sensor.nut_ups_nominal_input_voltage

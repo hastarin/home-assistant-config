@@ -1,5 +1,4 @@
 notify:
-  - name: pb
-    platform: pushbullet
+  - platform: pushbullet
+    name: pb
     api_key: !secret pushbullet_api_key
-
