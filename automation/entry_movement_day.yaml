@@ -1,4 +1,4 @@
-- alias: "entry movement night"
+- alias: "entry movement day"
   initial_state: True
   hide_entity: False
   trigger:
