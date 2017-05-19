@@ -13,6 +13,10 @@
       entity_id: device_tracker.jon_mobile
       state: "not_home"
   action:
+    service: notify.sms
+    data:
+      title: "Garage Door OPEN!"
+      message: "Your garage door is open!"
     service: notify.pb
     data:
       title: "Garage Door OPEN!"
