@@ -1,0 +1,206 @@
+- id: backup
+  alias: BACKUP (DAILY) Home Assistant
+  hide_entity: True
+  trigger:
+    platform: time
+    hours: 1
+    minutes: 1
+    seconds: 0
+  action:
+    - service: shell_command.backup
+- id: entry_move_night
+  alias: "entry movement night"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.aeotec_multisensor_motion_template_1
+      to: "motion detected"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"
+    - condition: state
+      entity_id: input_boolean.disable_auto_motion
+      state: "off"
+  action:
+    service: script.motion_entry
+- id: entry_move_day
+  alias: "entry movement day"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.aeotec_multisensor_motion_template_1
+      to: "motion detected"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: "above_horizon"
+    - condition: state
+      entity_id: input_boolean.disable_auto_motion
+      state: "off"
+  action:
+    service: script.motion_entry_bright
+- id: entry_move_away
+  alias: "entry movement away"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.aeotec_multisensor_motion_template_1
+      to: "motion detected"
+  condition:
+    - condition: state
+      entity_id: input_boolean.disable_auto_motion
+      state: "off"
+    - condition: state
+      entity_id: device_tracker.jon_mobile
+      state: "not_home"
+  action:
+    service: notify.pb
+    data:
+      title: "Motion detected"
+      message: "There is motion in your entry hall!"
+- id: garage_close
+  alias: "garage auto close"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.aeotec_multisensor_motion_template_1
+      to: "motion detected"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.garage_door
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.disable_auto_motion
+      state: "off"
+  action:
+    service: switch.turn_off
+    entity_id: switch.garage_door
+- id: garage_notify
+  alias: "garage door away"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_door
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.disable_auto_motion
+      state: "off"
+    - condition: state
+      entity_id: device_tracker.jon_mobile
+      state: "not_home"
+  action:
+    service: notify.sms
+    data:
+      title: "Garage Door OPEN!"
+      message: "Your garage door is open!"
+- id: integra_off
+  alias: Integra Off Night
+  trigger:
+    platform: state
+    entity_id: media_player.integra
+    to: 'off'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"
+    - condition: state
+      entity_id: input_boolean.disable_auto_lights
+      state: "off"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.living_room_read
+- id: jon_leave
+  alias: "jon leave"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: device_tracker.jon_mobile
+      from: "home"
+      to: "not_home"
+  condition:
+    - condition: state
+      entity_id: input_boolean.disable_auto_presence
+      state: "off"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.all_off
+- id: jon_sleeping
+  alias: "jon sleeping"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.jon_sleeping
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.disable_auto_presence
+      state: "off"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.all_off
+- id: remote_input_select
+  alias: Harmony Activity
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    from: 'Select Input'
+  action:
+    - service: remote.turn_on
+      entity_id: remote.living_room
+      data_template:
+        activity: >
+          {% if is_state("input_select.harmony", "nVidia Shield") %}
+            22486705
+          {% elif is_state("input_select.harmony", "Play XBox One") %}
+            6761513
+          {% elif is_state("input_select.harmony", "Control PS4") %}
+            15118032
+          {% else %}
+          {% endif %}
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Input"
+- id: remote_off 
+  alias: Harmony Off
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    to: 'Power Off'
+  action:
+    - service: remote.turn_off
+      entity_id: remote.living_room
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Input" 
+- id: update_available
+  alias: 'Update Available Notifications'
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    service: notify.sms
+    data:
+      message: 'Update for Home Assistant is available.'
+- id: zwave_heal
+  alias: HEAL Z-Wave
+  hide_entity: True
+  trigger:
+    platform: time
+    at: '03:00:00'
+  action:
+    service: zwave.heal_network
