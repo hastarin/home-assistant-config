@@ -1,33 +1,13 @@
 server {
         # Update this line to be your domain
-        server_name [YOUR HA HOST HERE] [YOUR MQTT HOST HERE];
+        server_name house.hastarin.com mqtt.hastarin.com hastpi3;
 
         # These shouldn't need to be changed
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
-        return 301 https://$host$request_uri;
-}
 
-server {
-	listen 443;
-	server_name [YOUR MQTT HOST HERE];
-
-	ssl_certificate /etc/letsencrypt/live/[YOUR MQTT HOST HERE]/fullchain.pem;
-	ssl_certificate_key /etc/letsencrypt/live/[YOUR MQTT HOST HERE]/privkey.pem;
-	ssl_dhparam /etc/nginx/ssl/dhparams.pem;
-
-
-	add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
-	ssl on;
-	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-	ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
-	ssl_prefer_server_ciphers on;
-	ssl_session_cache shared:SSL:10m;
-
-	proxy_buffering off;
-
-	location / {
-	    proxy_pass https://[YOUR MQTT IP HERE]:8443;
+	location /description {
+	    proxy_pass http://192.168.1.10:8300;
 	    proxy_set_header Host $host;
 	    proxy_redirect http:// https://;
 	    proxy_http_version 1.1;
@@ -35,14 +15,28 @@ server {
 	    proxy_set_header Upgrade $http_upgrade;
 	    proxy_set_header Connection $connection_upgrade;
 	}
+
+	location /api/pi/lights {
+	    proxy_pass http://192.168.1.10:8300;
+	    proxy_set_header Host $host;
+	    proxy_redirect http:// https://;
+	    proxy_http_version 1.1;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_set_header Upgrade $http_upgrade;
+	    proxy_set_header Connection $connection_upgrade;
+	}
+
+	location / {
+		return 301 https://$host$request_uri;
+	}
 }
 
 server {
 	listen 443;
-	server_name [YOUR HA HOST HERE];
+	server_name mqtt.hastarin.com;
 
-	ssl_certificate /etc/letsencrypt/live/[YOUR HA HOST HERE]/fullchain.pem;
-	ssl_certificate_key /etc/letsencrypt/live/[YOUR HA HOST HERE]/privkey.pem;
+	ssl_certificate /etc/letsencrypt/live/mqtt.hastarin.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/mqtt.hastarin.com/privkey.pem;
 	ssl_dhparam /etc/nginx/ssl/dhparams.pem;
 
 
@@ -56,13 +50,58 @@ server {
 	proxy_buffering off;
 
 	location / {
-	    proxy_pass http://[YOUR HA IP HERE]:8123;
+	    proxy_pass https://192.168.1.10:8443;
 	    proxy_set_header Host $host;
 	    proxy_redirect http:// https://;
 	    proxy_http_version 1.1;
 	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 	    proxy_set_header Upgrade $http_upgrade;
 	    proxy_set_header Connection $connection_upgrade;
+	}
+
+	location /api/notify.html5/callback {
+	    if ($http_authorization = "") { return 403; }
+	    allow all;
+	    proxy_pass http://localhost:8123;
+	    proxy_set_header Host $host;
+	    proxy_redirect http:// https://;
+	}
+}
+
+server {
+	listen 443;
+	server_name house.hastarin.com hastpi3;
+
+	ssl_certificate /etc/letsencrypt/live/house.hastarin.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/house.hastarin.com/privkey.pem;
+	ssl_dhparam /etc/nginx/ssl/dhparams.pem;
+
+
+	add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+	ssl on;
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+	ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
+	ssl_prefer_server_ciphers on;
+	ssl_session_cache shared:SSL:10m;
+
+	proxy_buffering off;
+
+	location / {
+	    proxy_pass http://192.168.1.10:8123;
+	    proxy_set_header Host $host;
+	    proxy_redirect http:// https://;
+	    proxy_http_version 1.1;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_set_header Upgrade $http_upgrade;
+	    proxy_set_header Connection $connection_upgrade;
+	}
+
+	location /api/notify.html5/callback {
+	    if ($http_authorization = "") { return 403; }
+	    allow all;
+	    proxy_pass http://localhost:8123;
+	    proxy_set_header Host $host;
+	    proxy_redirect http:// https://;
 	}
 }
 

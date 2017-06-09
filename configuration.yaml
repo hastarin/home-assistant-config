@@ -49,6 +49,7 @@ mqtt:
   password: !secret mqtt_pwd
 
 emulated_hue:
+  listen_port: 8300
   expose_by_default: true
   exposed_domains:
     - light
