@@ -1,7 +1,0 @@
-- alias: HEAL Z-Wave
-  hide_entity: True
-  trigger:
-    platform: time
-    after: '3:00:00'
-  action:
-    service: zwave.heal_network

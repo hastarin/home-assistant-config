@@ -49,7 +49,11 @@ mqtt:
   password: !secret mqtt_pwd
 
 emulated_hue:
+  host_ip: 192.168.1.10
   listen_port: 8300
+  advertise_ip: 192.168.1.10
+  advertise_port: 80
+  upnp_bind_multicast: false
   expose_by_default: true
   exposed_domains:
     - light
@@ -71,4 +75,4 @@ zone: !include_dir_list zones/
 group: !include groups.yaml
 
 script: !include_dir_merge_named scripts/
-automation: !include_dir_merge_list automation/
+automation: !include automations.yaml

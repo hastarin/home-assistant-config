@@ -1,9 +1,0 @@
-  - alias: BACKUP (DAILY) Home Assistant
-    hide_entity: True
-    trigger:
-      platform: time
-      hours: 1
-      minutes: 1
-      seconds: 0
-    action:
-      - service: shell_command.backup

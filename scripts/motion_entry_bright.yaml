@@ -8,7 +8,7 @@ motion_entry_bright:
       entity_id:
         - light.entry
       brightness: 255
-      color_temp: 154
+      color_temp: 500
   - service: script.turn_on
     data:
       entity_id: script.motion_entry_timer
