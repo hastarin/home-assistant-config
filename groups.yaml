@@ -155,12 +155,12 @@ weather_view:
 entry_sensors:
   name: Entry Sensors
   entities:
-  - sensor.aeotec_zw100_multisensor_6_burglar_3_10
+  - sensor.aeotec_zw100_multisensor_6_burglar
   - sensor.aeotec_multisensor_motion_template_1
-  - sensor.aeotec_zw100_multisensor_6_luminance_3_3
-  - sensor.aeotec_zw100_multisensor_6_relative_humidity_3_5
-  - sensor.aeotec_zw100_multisensor_6_temperature_3_1
-  - sensor.aeotec_zw100_multisensor_6_ultraviolet_3_27 
+  - sensor.aeotec_zw100_multisensor_6_luminance
+  - sensor.aeotec_zw100_multisensor_6_relative_humidity
+  - sensor.aeotec_zw100_multisensor_6_temperature
+  - sensor.aeotec_zw100_multisensor_6_ultraviolet
 
 jon:
   name: Jon

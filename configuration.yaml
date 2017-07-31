@@ -32,6 +32,8 @@ logbook: !include_dir_merge_named logbook/
 
 logger:
   default: warn
+  logs:
+    homeassistant.components.emulated_hue: debug
 
 sun:
 
@@ -49,11 +51,8 @@ mqtt:
   password: !secret mqtt_pwd
 
 emulated_hue:
-  host_ip: 192.168.1.10
-  listen_port: 8300
-  advertise_ip: 192.168.1.10
-  advertise_port: 80
-  upnp_bind_multicast: false
+  type: alexa
+  listen_port: 5000
   expose_by_default: true
   exposed_domains:
     - light
@@ -66,6 +65,7 @@ ring:
   password: !secret ring_pwd
 
 zwave:
+  new_entity_ids: true
   usb_path: /dev/ttyACM0
   config_path: /srv/homeassistant/src/python-openzwave/openzwave/config 
   device_config: !include zwave_device_config.yaml
