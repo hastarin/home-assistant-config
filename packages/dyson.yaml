@@ -1,0 +1,7 @@
+dyson:
+  username: !secret dyson_user
+  password: !secret dyson_pwd
+  language: AU
+  devices:
+    - device_id: PT7-AU-JAA0100A
+      device_ip: 192.168.1.198

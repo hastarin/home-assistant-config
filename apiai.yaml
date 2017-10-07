@@ -1,5 +1,6 @@
 apiai:  
-  intents:
+
+intent_script:
     smarthome.lights.switch.on:
       async_action: False
       speech: Ok

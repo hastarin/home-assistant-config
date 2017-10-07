@@ -140,6 +140,7 @@ living_room_view:
   - media_player.shield_android_tv
   - media_player.plex
   - media_player.blackmagic
+  - fan.pure_hotcool
 
 weather_view:
   name: Weather
@@ -186,6 +187,7 @@ default_view:
   - group.ring
   - group.entry_sensors
   - group.ups
+  - fan.pure_hotcool
 
 ups:
   name: UPS

@@ -1,15 +1,15 @@
-binary_sensor:
-  - platform: mqtt
-    name: "Garage Door"
-    state_topic: "garage/door/binary"
-    device_class: opening
-
 switch:
   - platform: mqtt
     name: "Garage Door"
     state_topic: "garage/door/binary"
     command_topic: "garage/door/switch"
     retain: false
+
+binary_sensor:
+  - platform: mqtt
+    name: "Garage Door"
+    state_topic: "garage/door/binary"
+    device_class: opening
 
 sensor:
   - platform: mqtt
