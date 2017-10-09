@@ -79,3 +79,6 @@ group: !include groups.yaml
 
 script: !include_dir_merge_named scripts/
 automation: !include automations.yaml
+
+fan:
+  - platform: dyson

@@ -127,7 +127,14 @@ harmony:
   entities:
   - sensor.living_room_activity
   - input_select.harmony
-  
+
+dyson_fan:
+  name: Dyson Pure Hot+Cool
+  entities:
+  - fan.pure_hotcool
+  - sensor.pure_hotcool_temperature
+  - sensor.pure_hotcool_humidity
+ 
 living_room_view:
   name: Living Room
   icon: mdi:sofa
@@ -140,7 +147,7 @@ living_room_view:
   - media_player.shield_android_tv
   - media_player.plex
   - media_player.blackmagic
-  - fan.pure_hotcool
+  - group.dyson_fan
 
 weather_view:
   name: Weather
@@ -187,7 +194,7 @@ default_view:
   - group.ring
   - group.entry_sensors
   - group.ups
-  - fan.pure_hotcool
+  - group.dyson_fan
 
 ups:
   name: UPS
