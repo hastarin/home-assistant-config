@@ -1,0 +1,3 @@
+platform: mqtt
+name: "Garage Door State"
+state_topic: "garage/door/state"
