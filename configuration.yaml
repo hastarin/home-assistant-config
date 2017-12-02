@@ -26,7 +26,8 @@ conversation:
 history:
 
 recorder:
-  purge_days: 7
+  purge_interval: 1
+  purge_keep_days: 7
 
 logbook: !include_dir_merge_named logbook/
 
@@ -70,7 +71,7 @@ ring:
 zwave:
   new_entity_ids: true
   usb_path: /dev/ttyACM0
-  config_path: /srv/homeassistant/src/python-openzwave/openzwave/config 
+  config_path: /home/homeassistant/.homeassistant/openzwave-config 
   device_config: !include zwave_device_config.yaml
 
 sensor: !include_dir_list sensors/

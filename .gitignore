@@ -18,3 +18,4 @@ deps/
 .uuid
 OZW_Log.txt
 pyozw.sqlite
+openzwave-config/
