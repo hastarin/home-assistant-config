@@ -204,3 +204,15 @@
     at: '03:00:00'
   action:
     service: zwave.heal_network
+- id: ring_video_download
+  alias: Ring Video Download
+  hide_entity: True
+  trigger:
+    platform: template
+    value_template: "{{ is_state_attr('sensor.ring_front_door_horseshoe_cct_last_activity', 'recording_status', 'ready') }}"
+  action:
+    service: downloader.download_file
+    data_template:
+      url: "{{ states.camera.front_door_horseshoe_cct.attributes.video_url }}"
+      filename: "latest.mp4"
+      overwrite: true

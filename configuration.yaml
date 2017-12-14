@@ -101,3 +101,5 @@ fan:
 ffmpeg:
   ffmpeg_bin: /usr/bin/ffmpeg
 
+downloader:
+  download_dir: /mnt/elements/downloads
