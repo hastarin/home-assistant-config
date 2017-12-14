@@ -11,6 +11,17 @@ binary_sensor:
     state_topic: "garage/door/binary"
     device_class: opening
 
+cover:
+  - platform: mqtt
+    name: "The Bat Cave"
+    command_topic: "garage/door/switch"
+    payload_open: "ON"
+    payload_close: "OFF"
+    state_topic: "garage/door/state"
+    state_open: "Open"
+    state_closed: "Closed"
+    retain: false
+
 homeassistant:
   customize:
     switch.garage_door:

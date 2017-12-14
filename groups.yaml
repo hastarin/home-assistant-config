@@ -31,6 +31,7 @@ garage_group:
     - sensor.garage_door_state
     - switch.garage_door
     - switch.garage_light_switch
+    - cover.the_bat_cave
 
 garage:
   name: Garage
@@ -58,11 +59,12 @@ netatmo_outdoor:
 ring:
   name: Doorbell
   entities:
-  - sensor.ring_front_door_battery
-  - sensor.ring_front_door_last_activity
-  - sensor.ring_front_door_last_ding
-  - sensor.ring_front_door_last_motion
-  - sensor.ring_front_door_volume
+  - sensor.ring_front_door_horseshoe_cct_battery
+  - sensor.ring_front_door_horseshoe_cct_last_activity
+  - sensor.ring_front_door_horseshoe_cct_last_ding
+  - sensor.ring_front_door_horseshoe_cct_last_motion
+  - sensor.ring_front_door_horseshoe_cct_volume
+  - camera.front_door_horseshoe_cct
   - sensor.ring_kitchen_volume
 
 wunderground:
@@ -159,6 +161,13 @@ weather_view:
   - group.office_sensors
   - group.wunderground  
   - group.entry_sensors
+
+cameras_view:
+  name: Cameras
+  icon: mdi:camera
+  view: yes
+  entities:
+  - camera.front_door_horseshoe_cct
 
 entry_sensors:
   name: Entry Sensors

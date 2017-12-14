@@ -9,6 +9,7 @@ homeassistant:
   packages: !include_dir_named packages/
 
 frontend:
+  javascript_version: latest
 
 config:
 
@@ -34,7 +35,9 @@ logbook: !include_dir_merge_named logbook/
 logger:
   default: warn
   logs:
-    homeassistant.components.emulated_hue: debug
+    homeassistant.components.sensor.dyson: debug
+    homeassistant.components.fan.dyson: debug
+    homeassistant.components.dyson: debug
 
 sun:
 
@@ -68,6 +71,9 @@ ring:
   username: !secret ring_user
   password: !secret ring_pwd
 
+camera:
+  - platform: ring
+
 zwave:
   new_entity_ids: true
   usb_path: /dev/ttyACM0
@@ -81,5 +87,17 @@ group: !include groups.yaml
 script: !include_dir_merge_named scripts/
 automation: !include automations.yaml
 
+dyson:
+  username: !secret dyson_user
+  password: !secret dyson_pwd
+  language: AU
+  devices:
+    - device_id: PT7-AU-JAA0100A
+      device_ip: 192.168.1.198
+
 fan:
   - platform: dyson
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
+
