@@ -9,7 +9,7 @@ homeassistant:
   packages: !include_dir_named packages/
 
 frontend:
-  javascript_version: latest
+#  javascript_version: latest
 
 config:
 
@@ -71,9 +71,6 @@ ring:
   username: !secret ring_user
   password: !secret ring_pwd
 
-camera:
-  - platform: ring
-
 zwave:
   new_entity_ids: true
   usb_path: /dev/ttyACM0
@@ -103,3 +100,9 @@ ffmpeg:
 
 downloader:
   download_dir: /mnt/elements/downloads
+
+camera:
+  - platform: ring
+  - platform: ffmpeg
+    name: last_ring_video
+    input: /mnt/elements/downloads/latest.mp4

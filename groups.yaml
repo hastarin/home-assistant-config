@@ -168,6 +168,7 @@ cameras_view:
   view: yes
   entities:
   - camera.front_door_horseshoe_cct
+  - camera.last_ring_video
 
 entry_sensors:
   name: Entry Sensors
