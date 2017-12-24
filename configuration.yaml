@@ -5,7 +5,7 @@ homeassistant:
   elevation: 73
   unit_system: metric
   time_zone: Australia/Melbourne
-  customize: !include misc/customize.yaml
+  customize: !include customize.yaml
   packages: !include_dir_named packages/
 
 frontend:
@@ -103,6 +103,15 @@ downloader:
 
 camera:
   - platform: ring
+    name: Ring Video Doorbell
   - platform: ffmpeg
-    name: last_ring_video
+    name: Front Door Camera
     input: /mnt/elements/downloads/latest.mp4
+  - platform: mjpeg
+    name: Livingroom Camera
+    mjpeg_url: http://127.0.0.1:8086/mjpeg
+
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - key: !secret xiaomi_key

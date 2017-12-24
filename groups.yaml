@@ -6,15 +6,9 @@ lights:
   - light.entry
   - light.guestroom
   - light.hall
-  - group.living_room
   - light.lounge_front
   - light.lounge_rear
   - light.office
-
-switches:
-  name: Switches
-  entities:
-  - switch.air_conditioner
 
 overrides:
   name: Disable
@@ -24,12 +18,9 @@ overrides:
   - input_boolean.disable_auto_presence
 
 garage_group:
-  name: Garage
+  name: Garage Switches
   control: hidden
   entities:
-    - sensor.garage_door_status
-    - sensor.garage_door_state
-    - switch.garage_door
     - switch.garage_light_switch
     - cover.the_bat_cave
 
@@ -39,6 +30,7 @@ garage:
   icon: mdi:garage
   entities:
     - group.garage_group
+    - group.garage_sensors
 
 netatmo_indoor:
   name: Netatmo Indoor
@@ -54,6 +46,8 @@ netatmo_outdoor:
   entities:
   - sensor.netatmo_outdoor_temperature
   - sensor.netatmo_outdoor_humidity
+  - sensor.netatmo_outdoor_battery
+  - sensor.netatmo_outdoor_radio
   - sun.sun
 
 ring:
@@ -94,7 +88,7 @@ wunderground:
   - sensor.pws_wind_degrees
 
 living_room:
-  name: Living Room
+  name: Living Room Lights
   entities:
   - light.lounge_front
   - light.lounge_rear
@@ -114,6 +108,7 @@ office_sensors:
   entities:
   - sensor.office_temperature
   - sensor.office_humidity
+  - binary_sensor.motion_sensor_158d0001d92086
 
 office_view:
   name: Office
@@ -142,6 +137,7 @@ living_room_view:
   icon: mdi:sofa
   view: yes
   entities:
+  - camera.livingroom_camera
   - group.living_room
   - group.harmony
   - media_player.integra
@@ -150,24 +146,26 @@ living_room_view:
   - media_player.plex
   - media_player.blackmagic
   - group.dyson_fan
+  - group.ups
 
 weather_view:
   name: Weather
   icon: mdi:cloud
   view: yes
   entities:
-  - group.netatmo_outdoor
   - group.netatmo_indoor
-  - group.office_sensors
-  - group.wunderground  
   - group.entry_sensors
+  - group.office_sensors
+  - group.garage_sensors
+  - group.netatmo_outdoor
+  - group.wunderground  
 
 cameras_view:
   name: Cameras
   icon: mdi:camera
   view: yes
   entities:
-  - camera.front_door_horseshoe_cct
+  - camera.livingroom_camera
   - camera.last_ring_video
 
 entry_sensors:
@@ -180,31 +178,63 @@ entry_sensors:
   - sensor.aeotec_zw100_multisensor_6_temperature
   - sensor.aeotec_zw100_multisensor_6_ultraviolet
 
+garage_sensors:
+  name: Garage Sensors
+  entities:
+  - sensor.garage_door_status
+  - sensor.garage_door_state
+  - sensor.aeotec_zw100_multisensor_6_usb_burglar
+  - sensor.aeotec_zw100_multisensor_6_usb_luminance
+  - sensor.aeotec_zw100_multisensor_6_usb_relative_humidity
+  - sensor.aeotec_zw100_multisensor_6_usb_temperature
+  - sensor.aeotec_zw100_multisensor_6_usb_ultraviolet
+
 jon:
   name: Jon
   entities:
   - device_tracker.jon_mobile
   - binary_sensor.jon_sleeping
+
+laundry_group:
+  name: Laundry
+  entities:
+  - switch.plug_158d00019d0f86
+  - binary_sensor.door_window_sensor_158d0001c2e60e
   
+laundry_view:
+  name: Laundry
+  icon: mdi:washing-machine
+  view: yes
+  entities:
+  - group.laundry_group
+
+overview:
+  name: ' Overview'
+  entities:
+  - sensor.netatmo_indoor_temperature
+  - sensor.netatmo_indoor_humidity
+  - switch.air_conditioner
+  - camera.livingroom_camera
+  - sensor.aeotec_zw100_multisensor_6_burglar
+  - sensor.garage_door_status
+  - sensor.garage_door_state
+  - cover.the_bat_cave
+  - sensor.aeotec_zw100_multisensor_6_usb_burglar
+  - sensor.aeotec_zw100_multisensor_6_usb_temperature
+  - sensor.aeotec_zw100_multisensor_6_usb_relative_humidity
+  
+
 default_view:
-  name: Home
+  name: 'zHome'
   icon: mdi:home
   view: yes
   entities:
+  - group.overview
   - group.jon
   - group.lights
-  - group.switches
   - group.overrides
-  - group.garage_group
-  - group.harmony
-  - media_player.integra
-  - group.netatmo_indoor
-  - group.netatmo_outdoor
-  - group.office_sensors
-  - group.ring
-  - group.entry_sensors
-  - group.ups
   - group.dyson_fan
+  - group.zigbee_group
 
 ups:
   name: UPS
@@ -221,3 +251,14 @@ ups:
   - sensor.nut_ups_nominal_battery_voltage
   - sensor.nut_ups_input_voltage
   - sensor.nut_ups_nominal_input_voltage
+
+zigbee_group:
+  name: Xiaomi Zigbee Stuff
+  icon: mdi:router-wireless
+  entities:
+  - binary_sensor.switch_158d0001d8dbde
+  - binary_sensor.wall_switch_both_158d0001641a34
+  - binary_sensor.wall_switch_left_158d0001641a34
+  - binary_sensor.wall_switch_right_158d0001641a34
+  - binary_sensor.smoke_sensor_158d0001641a34
+
