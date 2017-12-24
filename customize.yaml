@@ -1,0 +1,17 @@
+switch.plug_158d00019d0f86:
+  friendly_name: Washing Machine Plug
+  icon: mdi:washing-machine
+switch.wake_on_lan:
+  friendly_name: Wake PC
+  icon: mdi:monitor
+switch.garage_light_switch:
+  friendly_name: Garage Light
+  icon: mdi:white-balance-iridescent
+switch.air_conditioner:
+  icon: mdi:snowflake
+light.gateway_light_7811dc6c8ece:
+  friendly_name: Xiaomi Gateway Light
+binary_sensor.door_window_sensor_158d0001c2e60e:
+  friendly_name: Laundry Door Sensor
+binary_sensor.motion_sensor_158d0001d92086:
+  friendly_name: Motion Sensor (Xiaomi)

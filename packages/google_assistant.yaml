@@ -7,3 +7,5 @@ google_assistant:
   exposed_domains:
     - switch
     - light
+    - fan
+    - cover

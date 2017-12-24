@@ -253,7 +253,7 @@ ups:
   - sensor.nut_ups_nominal_input_voltage
 
 zigbee_group:
-  name: Xiaomi Zigbee Stuff
+  name: To Sort
   icon: mdi:router-wireless
   entities:
   - binary_sensor.switch_158d0001d8dbde
@@ -261,4 +261,6 @@ zigbee_group:
   - binary_sensor.wall_switch_left_158d0001641a34
   - binary_sensor.wall_switch_right_158d0001641a34
   - binary_sensor.smoke_sensor_158d0001641a34
+  - light.gateway_light_7811dc6c8ece
+  - light.aeotec_led_bulb_level
 
