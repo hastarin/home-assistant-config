@@ -21,3 +21,7 @@ sensor.humidity_158d0001fead1f:
   friendly_name: Bathroom Humidity
 sensor.illumination_7811dc6c8ece:
   friendly_name: Xiamoi Gateway Illumination
+group.all_automations:
+  hidden: false
+group.all_scripts:
+  hidden: false

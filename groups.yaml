@@ -278,7 +278,16 @@ default_view:
   - group.overview
   - group.jon
   - group.lights
-  - group.overrides
   - group.dyson_fan
   - group.zigbee_group
+
+automation:
+  name: Automation
+  view: yes
+  icon: mdi:auto-fix
+  entities:
+   - group.all_scenes
+   - group.all_automations
+   - group.all_scripts
+   - group.overrides
 

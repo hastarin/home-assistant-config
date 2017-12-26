@@ -9,7 +9,7 @@ homeassistant:
   packages: !include_dir_named packages/
 
 frontend:
-#  javascript_version: latest
+  javascript_version: latest
 
 config:
 
@@ -81,7 +81,7 @@ sensor: !include_dir_list sensors/
 zone: !include_dir_list zones/
 group: !include groups.yaml
 
-script: !include_dir_merge_named scripts/
+script: !include scripts.yaml
 automation: !include automations.yaml
 
 dyson:
