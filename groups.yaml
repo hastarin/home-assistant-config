@@ -147,6 +147,8 @@ living_room_view:
   - media_player.blackmagic
   - group.dyson_fan
   - group.ups
+  - sensor.illumination_7811dc6c8ece
+  - light.gateway_light_7811dc6c8ece
 
 weather_view:
   name: Weather
@@ -214,7 +216,6 @@ overview:
   - sensor.netatmo_indoor_temperature
   - sensor.netatmo_indoor_humidity
   - switch.air_conditioner
-  - camera.livingroom_camera
   - sensor.aeotec_zw100_multisensor_6_burglar
   - sensor.garage_door_status
   - sensor.garage_door_state
@@ -261,6 +262,6 @@ zigbee_group:
   - binary_sensor.wall_switch_left_158d0001641a34
   - binary_sensor.wall_switch_right_158d0001641a34
   - binary_sensor.smoke_sensor_158d0001641a34
-  - light.gateway_light_7811dc6c8ece
   - light.aeotec_led_bulb_level
-
+  - sensor.temperature_158d0001fead1f
+  - sensor.humidity_158d0001fead1f

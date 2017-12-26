@@ -15,3 +15,9 @@ binary_sensor.door_window_sensor_158d0001c2e60e:
   friendly_name: Laundry Door Sensor
 binary_sensor.motion_sensor_158d0001d92086:
   friendly_name: Motion Sensor (Xiaomi)
+sensor.temperature_158d0001fead1f:
+  friendly_name: Bathroom Temperature
+sensor.humidity_158d0001fead1f:
+  friendly_name: Bathroom Humidity
+sensor.illumination_7811dc6c8ece:
+  friendly_name: Xiamoi Gateway Illumination
