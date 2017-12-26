@@ -147,6 +147,12 @@ living_room_view:
   - media_player.blackmagic
   - group.dyson_fan
   - group.ups
+  - group.xiaomi_gateway
+
+xiaomi_gateway:
+  name: Xiaomi Gateway
+  icon: mdi:router-wireless
+  entities:
   - sensor.illumination_7811dc6c8ece
   - light.gateway_light_7811dc6c8ece
 
@@ -226,7 +232,7 @@ overview:
   
 
 default_view:
-  name: 'zHome'
+  name: Home
   icon: mdi:home
   view: yes
   entities:
@@ -253,6 +259,19 @@ ups:
   - sensor.nut_ups_input_voltage
   - sensor.nut_ups_nominal_input_voltage
 
+bathroom_sensors:
+  name: Bathroom Sensors
+  entities:
+  - sensor.temperature_158d0001fead1f
+  - sensor.humidity_158d0001fead1f
+
+bathroom_view:
+  name: Bathroom
+  icon: mdi:human-male-female
+  view: yes
+  entities:
+  - group.bathroom_sensors
+
 zigbee_group:
   name: To Sort
   icon: mdi:router-wireless
@@ -263,5 +282,3 @@ zigbee_group:
   - binary_sensor.wall_switch_right_158d0001641a34
   - binary_sensor.smoke_sensor_158d0001641a34
   - light.aeotec_led_bulb_level
-  - sensor.temperature_158d0001fead1f
-  - sensor.humidity_158d0001fead1f
