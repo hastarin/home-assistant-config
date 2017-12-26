@@ -1,106 +1,106 @@
 - id: backup
   alias: BACKUP (DAILY) Home Assistant
-  hide_entity: True
+  hide_entity: true
   trigger:
     platform: time
     hours: 1
     minutes: 1
     seconds: 0
   action:
-    - service: shell_command.backup
+  - service: shell_command.backup
 - id: entry_move_night
-  alias: "entry movement night"
-  initial_state: True
-  hide_entity: False
+  alias: entry movement night
+  initial_state: true
+  hide_entity: false
   trigger:
-    - platform: state
-      entity_id: sensor.aeotec_multisensor_motion_template_1
-      to: "motion detected"
+  - platform: state
+    entity_id: sensor.aeotec_multisensor_motion_template_1
+    to: motion detected
   condition:
-    - condition: state
-      entity_id: sun.sun
-      state: "below_horizon"
-    - condition: state
-      entity_id: input_boolean.disable_auto_motion
-      state: "off"
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
   action:
     service: script.motion_entry
 - id: entry_move_day
-  alias: "entry movement day"
-  initial_state: True
-  hide_entity: False
+  alias: entry movement day
+  initial_state: true
+  hide_entity: false
   trigger:
-    - platform: state
-      entity_id: sensor.aeotec_multisensor_motion_template_1
-      to: "motion detected"
+  - platform: state
+    entity_id: sensor.aeotec_multisensor_motion_template_1
+    to: motion detected
   condition:
-    - condition: state
-      entity_id: sun.sun
-      state: "above_horizon"
-    - condition: state
-      entity_id: input_boolean.disable_auto_motion
-      state: "off"
+  - condition: state
+    entity_id: sun.sun
+    state: above_horizon
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
   action:
     service: script.motion_entry_bright
 - id: entry_move_away
-  alias: "entry movement away"
-  initial_state: True
-  hide_entity: False
+  alias: entry movement away
+  initial_state: true
+  hide_entity: false
   trigger:
-    - platform: state
-      entity_id: sensor.aeotec_multisensor_motion_template_1
-      to: "motion detected"
+  - platform: state
+    entity_id: sensor.aeotec_multisensor_motion_template_1
+    to: motion detected
   condition:
-    - condition: state
-      entity_id: input_boolean.disable_auto_motion
-      state: "off"
-    - condition: state
-      entity_id: device_tracker.jon_mobile
-      state: "not_home"
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
+  - condition: state
+    entity_id: device_tracker.jon_mobile
+    state: not_home
   action:
     service: notify.pb
     data:
-      title: "Motion detected"
-      message: "There is motion in your entry hall!"
+      title: Motion detected
+      message: There is motion in your entry hall!
 - id: garage_close
-  alias: "garage auto close"
-  initial_state: True
-  hide_entity: False
+  alias: garage auto close
+  initial_state: true
+  hide_entity: false
   trigger:
-    - platform: state
-      entity_id: sensor.aeotec_multisensor_motion_template_1
-      to: "motion detected"
+  - platform: state
+    entity_id: sensor.aeotec_multisensor_motion_template_1
+    to: motion detected
   condition:
-    - condition: state
-      entity_id: binary_sensor.garage_door
-      state: "on"
-    - condition: state
-      entity_id: input_boolean.disable_auto_motion
-      state: "off"
+  - condition: state
+    entity_id: binary_sensor.garage_door
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
   action:
     service: switch.turn_off
     entity_id: switch.garage_door
 - id: garage_notify
-  alias: "garage door away"
-  initial_state: True
-  hide_entity: False
+  alias: garage door away
+  initial_state: true
+  hide_entity: false
   trigger:
-    - platform: state
-      entity_id: binary_sensor.garage_door
-      from: "off"
-      to: "on"
+  - platform: state
+    entity_id: binary_sensor.garage_door
+    from: 'off'
+    to: 'on'
   condition:
-    - condition: state
-      entity_id: input_boolean.disable_auto_motion
-      state: "off"
-    - condition: state
-      entity_id: device_tracker.jon_mobile
-      state: "not_home"
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
+  - condition: state
+    entity_id: device_tracker.jon_mobile
+    state: not_home
   action:
     service: notify.sms
     data:
-      title: "Garage Door OPEN!"
-      message: "Your garage door is open!"
+      title: Garage Door OPEN!
+      message: Your garage door is open!
 - id: integra_off
   alias: Integra Off Night
   trigger:
@@ -108,111 +108,170 @@
     entity_id: media_player.integra
     to: 'off'
   condition:
-    - condition: state
-      entity_id: sun.sun
-      state: "below_horizon"
-    - condition: state
-      entity_id: input_boolean.disable_auto_lights
-      state: "off"
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  - condition: state
+    entity_id: input_boolean.disable_auto_lights
+    state: 'off'
   action:
-    - service: scene.turn_on
-      entity_id: scene.living_room_read
+  - service: scene.turn_on
+    entity_id: scene.living_room_read
 - id: jon_leave
-  alias: "jon leave"
-  initial_state: True
-  hide_entity: False
+  alias: jon leave
+  initial_state: true
+  hide_entity: false
   trigger:
-    - platform: state
-      entity_id: device_tracker.jon_mobile
-      from: "home"
-      to: "not_home"
+  - platform: state
+    entity_id: device_tracker.jon_mobile
+    from: home
+    to: not_home
   condition:
-    - condition: state
-      entity_id: input_boolean.disable_auto_presence
-      state: "off"
+  - condition: state
+    entity_id: input_boolean.disable_auto_presence
+    state: 'off'
   action:
-    - service: scene.turn_on
-      entity_id: scene.all_off
+  - service: scene.turn_on
+    entity_id: scene.all_off
 - id: jon_sleeping
-  alias: "jon sleeping"
-  initial_state: True
-  hide_entity: False
+  alias: jon sleeping
+  initial_state: true
+  hide_entity: false
   trigger:
-    - platform: state
-      entity_id: binary_sensor.jon_sleeping
-      from: "off"
-      to: "on"
+  - platform: state
+    entity_id: binary_sensor.jon_sleeping
+    from: 'off'
+    to: 'on'
   condition:
-    - condition: state
-      entity_id: input_boolean.disable_auto_presence
-      state: "off"
+  - condition: state
+    entity_id: input_boolean.disable_auto_presence
+    state: 'off'
   action:
-    - service: scene.turn_on
-      entity_id: scene.all_off
+  - service: scene.turn_on
+    entity_id: scene.all_off
 - id: remote_input_select
   alias: Harmony Activity
-  hide_entity: True
+  hide_entity: true
   trigger:
     platform: state
     entity_id: input_select.harmony
-    from: 'Select Input'
+    from: Select Input
   action:
-    - service: remote.turn_on
-      entity_id: remote.living_room
-      data_template:
-        activity: >
-          {% if is_state("input_select.harmony", "nVidia Shield") %}
-            22486705
-          {% elif is_state("input_select.harmony", "Play XBox One") %}
-            6761513
-          {% elif is_state("input_select.harmony", "Control PS4") %}
-            15118032
-          {% else %}
-          {% endif %}
-    - service: input_select.select_option
-      entity_id: input_select.harmony
-      data_template:
-        option: "Select Input"
-- id: remote_off 
+  - service: remote.turn_on
+    entity_id: remote.living_room
+    data_template:
+      activity: "{% if is_state(\"input_select.harmony\", \"nVidia Shield\") %}\n\
+        \  22486705\n{% elif is_state(\"input_select.harmony\", \"Play XBox One\"\
+        ) %}\n  6761513\n{% elif is_state(\"input_select.harmony\", \"Control PS4\"\
+        ) %}\n  15118032\n{% else %} {% endif %}\n"
+  - service: input_select.select_option
+    entity_id: input_select.harmony
+    data_template:
+      option: Select Input
+- id: remote_off
   alias: Harmony Off
-  hide_entity: True
+  hide_entity: true
   trigger:
     platform: state
     entity_id: input_select.harmony
-    to: 'Power Off'
+    to: Power Off
   action:
-    - service: remote.turn_off
-      entity_id: remote.living_room
-    - service: input_select.select_option
-      entity_id: input_select.harmony
-      data_template:
-        option: "Select Input" 
+  - service: remote.turn_off
+    entity_id: remote.living_room
+  - service: input_select.select_option
+    entity_id: input_select.harmony
+    data_template:
+      option: Select Input
 - id: update_available
-  alias: 'Update Available Notifications'
+  alias: Update Available Notifications
   trigger:
     platform: state
     entity_id: updater.updater
   action:
     service: notify.sms
     data:
-      message: 'Update for Home Assistant is available.'
+      message: Update for Home Assistant is available.
 - id: zwave_heal
   alias: HEAL Z-Wave
-  hide_entity: True
+  hide_entity: true
   trigger:
     platform: time
-    at: '03:00:00'
+    at: 03:00:00
   action:
     service: zwave.heal_network
 - id: ring_video_download
   alias: Ring Video Download
-  hide_entity: True
+  hide_entity: true
   trigger:
     platform: template
-    value_template: "{{ is_state_attr('sensor.ring_front_door_horseshoe_cct_last_activity', 'recording_status', 'ready') }}"
+    value_template: '{{ is_state_attr(''sensor.ring_front_door_horseshoe_cct_last_activity'',
+      ''recording_status'', ''ready'') }}'
   action:
     service: downloader.download_file
     data_template:
-      url: "{{ states.camera.front_door_horseshoe_cct.attributes.video_url }}"
-      filename: "latest.mp4"
+      url: '{{ states.camera.front_door_horseshoe_cct.attributes.video_url }}'
+      filename: latest.mp4
       overwrite: true
+- action:
+  - data:
+      entity_id: light.office
+    service: light.turn_off
+  alias: Office Movement Idle
+  condition: []
+  id: '1514259106930'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001d92086
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: light.office
+    service: light.turn_on
+  alias: Office Movement
+  condition: []
+  id: '1514259705438'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001d92086
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.bedroom
+    service: light.toggle
+  alias: Button Click
+  condition: []
+  id: '1514290548948'
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001d8dbde
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: switch.air_conditioner
+    service: switch.toggle
+  alias: Button Double Click
+  condition: []
+  id: '1514290548958'
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001d8dbde
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: group.all_lights
+    service: light.turn_off
+  alias: Button Long Click
+  condition: []
+  id: '1514290548968'
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d0001d8dbde
+    event_type: click
+    platform: event
