@@ -34,10 +34,10 @@ logbook: !include_dir_merge_named logbook/
 
 logger:
   default: warn
-  logs:
-    homeassistant.components.sensor.dyson: debug
-    homeassistant.components.fan.dyson: debug
-    homeassistant.components.dyson: debug
+#  logs:
+#    homeassistant.components.sensor.dyson: debug
+#    homeassistant.components.fan.dyson: debug
+#    homeassistant.components.dyson: debug
 
 sun:
 
@@ -115,3 +115,8 @@ xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - key: !secret xiaomi_key
+
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: 1234

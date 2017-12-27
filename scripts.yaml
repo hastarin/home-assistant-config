@@ -1,3 +1,12 @@
+motion_office_timer:
+  sequence:
+  - delay:
+      minutes: 3
+  - service: light.turn_off
+    data:
+      entity_id:
+        - light.office
+
 motion_entry_timer:
   sequence:
   - delay:

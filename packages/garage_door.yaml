@@ -21,8 +21,3 @@ cover:
     state_open: "Open"
     state_closed: "Closed"
     retain: false
-
-homeassistant:
-  customize:
-    switch.garage_door:
-      icon: mdi:garage-open

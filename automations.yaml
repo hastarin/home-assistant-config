@@ -215,21 +215,15 @@
 - action:
   - data:
       entity_id: light.office
-    service: light.turn_off
-  alias: Office Movement Idle
-  condition: []
-  id: '1514259106930'
-  trigger:
-  - entity_id: binary_sensor.motion_sensor_158d0001d92086
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      entity_id: light.office
     service: light.turn_on
+  - data:
+      entity_id: script.motion_office_timer
+    service: script.turn_off
   alias: Office Movement
-  condition: []
+  condition:
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
   id: '1514259705438'
   trigger:
   - entity_id: binary_sensor.motion_sensor_158d0001d92086
@@ -275,3 +269,19 @@
       entity_id: binary_sensor.switch_158d0001d8dbde
     event_type: click
     platform: event
+- action:
+  - service: script.motion_office_timer
+  alias: Office No Movement
+  condition:
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
+  - condition: state
+    entity_id: input_boolean.disable_auto_lights
+    state: 'off'
+  id: '1514331552883'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001d92086
+    from: 'on'
+    platform: state
+    to: 'off'

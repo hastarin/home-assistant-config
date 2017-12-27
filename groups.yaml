@@ -257,6 +257,7 @@ bathroom_view:
   icon: mdi:human-male-female
   view: yes
   entities:
+  - light.bathroom
   - group.bathroom_sensors
 
 zigbee_group:
@@ -280,6 +281,12 @@ default_view:
   - group.lights
   - group.dyson_fan
   - group.zigbee_group
+  - group.alarm
+
+alarm:
+  name: Alarm Panel
+  entities:
+  - alarm_control_panel.home_alarm
 
 automation:
   name: Automation

@@ -5,12 +5,13 @@ switch.wake_on_lan:
   friendly_name: Wake PC
   icon: mdi:monitor
 switch.garage_light_switch:
-  friendly_name: Garage Light
+  friendly_name: Garage
   icon: mdi:white-balance-iridescent
+  google_assistant_type: light
 switch.air_conditioner:
   icon: mdi:snowflake
 light.gateway_light_7811dc6c8ece:
-  friendly_name: Xiaomi Gateway Light
+  friendly_name: Xiaomi Gateway
 binary_sensor.door_window_sensor_158d0001c2e60e:
   friendly_name: Laundry Door Sensor
 binary_sensor.motion_sensor_158d0001d92086:
@@ -25,3 +26,9 @@ group.all_automations:
   hidden: false
 group.all_scripts:
   hidden: false
+switch.garage_door:
+  icon: mdi:garage-open
+  google_assistant: false
+fan.pure_hotcool_2:
+  hidden: true
+  google_assistant: false
