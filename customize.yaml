@@ -32,3 +32,31 @@ switch.garage_door:
 fan.pure_hotcool_2:
   hidden: true
   google_assistant: false
+zwave.aeotec_zw100_multisensor_6:
+  friendly_name: Entry Sensor
+zwave.aeotec_zw100_multisensor_6_usb:
+  friendly_name: Garage Sensor
+sensor.aeotec_zw100_multisensor_6_luminance:
+  friendly_name: Entry Luminance
+sensor.aeotec_zw100_multisensor_6_relative_humidity:
+  friendly_name: Entry Humidity
+sensor.aeotec_zw100_multisensor_6_temperature:
+  friendly_name: Entry Temperature
+sensor.aeotec_zw100_multisensor_6_ultraviolet:
+  friendly_name: Entry UV
+sensor.aeotec_zw100_multisensor_6_usb_luminance:
+  friendly_name: Garage Luminance
+sensor.aeotec_zw100_multisensor_6_usb_relative_humidity:
+  friendly_name: Garage Humidity
+sensor.aeotec_zw100_multisensor_6_usb_temperature:
+  friendly_name: Garage Temperature
+sensor.aeotec_zw100_multisensor_6_usb_ultraviolet:
+  friendly_name: Garage UV
+binary_sensor.wall_switch_left_158d0001641a34:
+  friendly_name: Wall Switch Left
+binary_sensor.wall_switch_both_158d0001641a34:
+  friendly_name: Wall Switch Both
+binary_sensor.wall_switch_right_158d0001641a34:
+  friendly_name: Wall Switch Right
+binary_sensor.switch_158d0001d8dbde:
+  friendly_name: Bedside Switch

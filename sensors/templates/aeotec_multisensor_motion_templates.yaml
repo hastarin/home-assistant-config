@@ -1,0 +1,8 @@
+platform: template
+sensors:
+  aeotec_multisensor_motion_template_1:
+    value_template: "{%if states.sensor.aeotec_zw100_multisensor_6_burglar.state == '8' %}motion detected{% elif states.sensor.aeotec_zw100_multisensor_6_burglar.state == '0' %}standby{% elif states.sensor.aeotec_zw100_multisensor_6_burglar.state == '3' %}tamper detected{% endif %}"
+    friendly_name: "Entry PIR"
+  aeotec_multisensor_motion_template_2:
+    value_template: "{%if states.sensor.aeotec_zw100_multisensor_6_usb_burglar.state == '8' %}motion detected{% elif states.sensor.aeotec_zw100_multisensor_6_usb_burglar.state == '0' %}standby{% elif states.sensor.aeotec_zw100_multisensor_6_usb_burglar.state == '3' %}tamper detected{% endif %}"
+    friendly_name: "Garage PIR"

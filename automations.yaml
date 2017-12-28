@@ -9,7 +9,7 @@
   action:
   - service: shell_command.backup
 - id: entry_move_night
-  alias: entry movement night
+  alias: Entry Movement Night
   initial_state: true
   hide_entity: false
   trigger:
@@ -26,7 +26,7 @@
   action:
     service: script.motion_entry
 - id: entry_move_day
-  alias: entry movement day
+  alias: Entry Movement Day
   initial_state: true
   hide_entity: false
   trigger:
@@ -43,7 +43,7 @@
   action:
     service: script.motion_entry_bright
 - id: entry_move_away
-  alias: entry movement away
+  alias: Entry Movement Away
   initial_state: true
   hide_entity: false
   trigger:
@@ -63,7 +63,7 @@
       title: Motion detected
       message: There is motion in your entry hall!
 - id: garage_close
-  alias: garage auto close
+  alias: Garage Auto Close
   initial_state: true
   hide_entity: false
   trigger:
@@ -81,13 +81,13 @@
     service: switch.turn_off
     entity_id: switch.garage_door
 - id: garage_notify
-  alias: garage door away
+  alias: Garage Door Away
   initial_state: true
   hide_entity: false
   trigger:
-  - platform: state
-    entity_id: binary_sensor.garage_door
+  - entity_id: binary_sensor.garage_door
     from: 'off'
+    platform: state
     to: 'on'
   condition:
   - condition: state
@@ -97,10 +97,14 @@
     entity_id: device_tracker.jon_mobile
     state: not_home
   action:
-    service: notify.sms
-    data:
-      title: Garage Door OPEN!
+  - data:
       message: Your garage door is open!
+      title: Garage Door OPEN!
+    service: notify.sms
+  - data:
+      message: Your garage door is open!
+      title: Garage Door OPEN!
+    service: notify.pb
 - id: integra_off
   alias: Integra Off Night
   trigger:
@@ -118,7 +122,7 @@
   - service: scene.turn_on
     entity_id: scene.living_room_read
 - id: jon_leave
-  alias: jon leave
+  alias: Jon Leaving
   initial_state: true
   hide_entity: false
   trigger:
@@ -134,7 +138,7 @@
   - service: scene.turn_on
     entity_id: scene.all_off
 - id: jon_sleeping
-  alias: jon sleeping
+  alias: Jon Sleeping
   initial_state: true
   hide_entity: false
   trigger:
@@ -285,3 +289,17 @@
     from: 'on'
     platform: state
     to: 'off'
+- action:
+  - data:
+      entity_id: switch.air_conditioner
+    service: switch.turn_off
+  alias: Aircon Auto Off
+  condition:
+  - below: '26'
+    condition: numeric_state
+    entity_id: sensor.netatmo_outdoor_temperature
+  id: '1514418240105'
+  trigger:
+  - below: '22'
+    entity_id: sensor.netatmo_indoor_temperature
+    platform: numeric_state

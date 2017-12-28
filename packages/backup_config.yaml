@@ -17,8 +17,8 @@ automation:
       - service: shell_command.backup
 
 shell_command:
-  # BACKUP - 1 FILE PER MONTH, OVERWRITE
-  backup: 7z u -r "/mnt/NASJB/backup/HomeAssistant/backup-$(date +"%m%Y").7z" /home/homeassistant/.homeassistant
+  # BACKUP - 1 FILE PER DAY
+  backup: 7z u -r "/mnt/NASJB/backup/HomeAssistant/backup-$(date +"%Y%m%d").7z" /home/homeassistant/.homeassistant
 
 script:
   backup:
