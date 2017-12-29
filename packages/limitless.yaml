@@ -10,13 +10,13 @@ light:
         name: Bedroom
       - number: 2
         type: white
-        name: Entry
+        name: Laundry
       - number: 3
         type: white
-        name: Lounge Rear
+        name: Dining Room
       - number: 4
         type: white
-        name: Lounge Front
+        name: Living Room
     - host: 192.168.1.92
       version: 1
       port: 50000

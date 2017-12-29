@@ -1,12 +1,10 @@
 motion_office_timer:
   sequence:
-  - delay:
-      minutes: 3
-  - service: light.turn_off
-    data:
+  - delay: 00:01:30
+  - data:
       entity_id:
-        - light.office
-
+      - light.office
+    service: light.turn_off
 motion_entry_timer:
   sequence:
   - delay:
@@ -14,8 +12,7 @@ motion_entry_timer:
   - service: light.turn_off
     data:
       entity_id:
-        - light.entry
-
+      - light.aeotec_led_bulb_level
 motion_entry_bright:
   sequence:
   - service: script.turn_off
@@ -24,13 +21,11 @@ motion_entry_bright:
   - service: light.turn_on
     data:
       entity_id:
-        - light.entry
+      - light.aeotec_led_bulb_level
       brightness: 255
-      color_temp: 500
   - service: script.turn_on
     data:
       entity_id: script.motion_entry_timer
-
 motion_entry:
   sequence:
   - service: script.turn_off
@@ -39,13 +34,11 @@ motion_entry:
   - service: light.turn_on
     data:
       entity_id:
-        - light.entry
+      - light.aeotec_led_bulb_level
       brightness: 50
-      color_temp: 154
   - service: script.turn_on
     data:
       entity_id: script.motion_entry_timer
-
 leaving:
   sequence:
   - service: light.turn_off
@@ -57,4 +50,4 @@ leaving:
   - service: switch.turn_on
     data:
       entity_id:
-        - switch.garage_door
+      - switch.garage_door

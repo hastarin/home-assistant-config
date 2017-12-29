@@ -1,14 +1,16 @@
 lights:
   name: Lights
   entities:
+  - light.aeotec_led_bulb_level
   - light.bathroom
   - light.bedroom
-  - light.entry
-  - light.guestroom
-  - light.hall
-  - light.lounge_front
-  - light.lounge_rear
+  - light.dining_room
+  - light.living_room
   - light.office
+  - light.hall
+  - light.laundry
+  - light.guestroom
+  - light.gateway_light_7811dc6c8ece
 
 overrides:
   name: Disable
@@ -23,14 +25,6 @@ garage_group:
   entities:
     - switch.garage_light_switch
     - cover.the_bat_cave
-
-garage:
-  name: Garage
-  view: true
-  icon: mdi:garage
-  entities:
-    - group.garage_group
-    - group.garage_sensors
 
 netatmo_indoor:
   name: Netatmo Indoor
@@ -149,6 +143,29 @@ living_room_view:
   - group.ups
   - group.xiaomi_gateway
 
+bathroom_view:
+  name: Bathroom
+  icon: mdi:human-male-female
+  view: yes
+  entities:
+  - light.bathroom
+  - group.bathroom_sensors
+
+garage:
+  name: Garage
+  view: true
+  icon: mdi:garage
+  entities:
+    - group.garage_group
+    - group.garage_sensors
+
+laundry_view:
+  name: Laundry
+  icon: mdi:washing-machine
+  view: yes
+  entities:
+  - group.laundry_group
+
 xiaomi_gateway:
   name: Xiaomi Gateway
   icon: mdi:router-wireless
@@ -208,22 +225,19 @@ laundry_group:
   - switch.plug_158d00019d0f86
   - binary_sensor.door_window_sensor_158d0001c2e60e
   
-laundry_view:
-  name: Laundry
-  icon: mdi:washing-machine
-  view: yes
-  entities:
-  - group.laundry_group
-
 overview:
   name: ' Overview'
+  control: hidden
   entities:
-  - sensor.aeotec_multisensor_motion_template_1
-  - sensor.aeotec_multisensor_motion_template_2
-  - sensor.garage_door_state
   - sensor.netatmo_indoor_temperature
   - sensor.netatmo_indoor_humidity
   - switch.air_conditioner
+  - sensor.netatmo_outdoor_temperature
+  - sensor.netatmo_outdoor_humidity
+  - sensor.aeotec_multisensor_motion_template_1
+  - light.aeotec_led_bulb_level
+  - sensor.aeotec_multisensor_motion_template_2
+  - sensor.garage_door_state
   - cover.the_bat_cave
   
 ups:
@@ -248,14 +262,6 @@ bathroom_sensors:
   - sensor.temperature_158d0001fead1f
   - sensor.humidity_158d0001fead1f
 
-bathroom_view:
-  name: Bathroom
-  icon: mdi:human-male-female
-  view: yes
-  entities:
-  - light.bathroom
-  - group.bathroom_sensors
-
 zigbee_group:
   name: To Sort
   icon: mdi:router-wireless
@@ -265,7 +271,6 @@ zigbee_group:
   - binary_sensor.wall_switch_left_158d0001641a34
   - binary_sensor.wall_switch_right_158d0001641a34
   - binary_sensor.smoke_sensor_158d0001641a34
-  - light.aeotec_led_bulb_level
 
 default_view:
   name: Home

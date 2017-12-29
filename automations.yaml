@@ -303,3 +303,49 @@
   - below: '22'
     entity_id: sensor.netatmo_indoor_temperature
     platform: numeric_state
+- action:
+  - data:
+      color_name: red
+      entity_id: light.gateway_light_7811dc6c8ece
+    service: light.turn_on
+  - data:
+      entity_id: media_player.living_room
+      language: en
+      message: Your garage door is open
+    service: tts.google_say
+  - data:
+      entity_id: media_player.bedroom_home
+      language: en
+      message: Your garage door is open
+    service: tts.google_say
+  alias: Garage Door Open
+  condition: []
+  id: '1514460392129'
+  trigger:
+  - entity_id: binary_sensor.garage_door
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.gateway_light_7811dc6c8ece
+    service: light.turn_off
+  - data:
+      entity_id: media_player.living_room
+      language: en
+      message: Your garage door is closed
+    service: tts.google_say
+  - data:
+      entity_id: media_player.bedroom_home
+      language: en
+      message: Your garage door is closed
+    service: tts.google_say
+  alias: Garage Door Close
+  condition:
+  - condition: state
+    entity_id: light.gateway_light_7811dc6c8ece
+    state: 'on'
+  id: '1514460504406'
+  trigger:
+  - entity_id: binary_sensor.garage_door
+    platform: state
+    to: 'off'
