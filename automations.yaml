@@ -67,8 +67,8 @@
   initial_state: true
   hide_entity: false
   trigger:
-  - platform: state
-    entity_id: sensor.aeotec_multisensor_motion_template_1
+  - entity_id: sensor.aeotec_multisensor_motion_template_1
+    platform: state
     to: motion detected
   condition:
   - condition: state
@@ -78,8 +78,15 @@
     entity_id: input_boolean.disable_auto_motion
     state: 'off'
   action:
-    service: switch.turn_off
+  - data:
+      entity_id: media_player.living_room
+      language: en
+      message: Welcome home.  Closing your garage door.
     entity_id: switch.garage_door
+    service: tts.google_say
+  - data:
+      entity_id: switch.garage_door
+    service: switch.turn_off
 - id: garage_notify
   alias: Garage Door Away
   initial_state: true
@@ -91,20 +98,17 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: input_boolean.disable_auto_motion
-    state: 'off'
-  - condition: state
     entity_id: device_tracker.jon_mobile
     state: not_home
   action:
   - data:
       message: Your garage door is open!
       title: Garage Door OPEN!
-    service: notify.sms
+    service: notify.pb
   - data:
       message: Your garage door is open!
       title: Garage Door OPEN!
-    service: notify.pb
+    service: notify.sms
 - id: integra_off
   alias: Integra Off Night
   trigger:
@@ -313,11 +317,6 @@
       language: en
       message: Your garage door is open
     service: tts.google_say
-  - data:
-      entity_id: media_player.bedroom_home
-      language: en
-      message: Your garage door is open
-    service: tts.google_say
   alias: Garage Door Open
   condition: []
   id: '1514460392129'
@@ -331,11 +330,6 @@
     service: light.turn_off
   - data:
       entity_id: media_player.living_room
-      language: en
-      message: Your garage door is closed
-    service: tts.google_say
-  - data:
-      entity_id: media_player.bedroom_home
       language: en
       message: Your garage door is closed
     service: tts.google_say
