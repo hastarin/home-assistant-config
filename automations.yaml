@@ -343,3 +343,12 @@
   - entity_id: binary_sensor.garage_door
     platform: state
     to: 'off'
+- action:
+  - service: light.turn_on
+  alias: Smoke Sensor
+  condition: []
+  id: '1514537836789'
+  trigger:
+  - entity_id: binary_sensor.smoke_sensor_158d0001a93896
+    platform: state
+    to: 'on'

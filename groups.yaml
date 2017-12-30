@@ -224,6 +224,7 @@ laundry_group:
   entities:
   - switch.plug_158d00019d0f86
   - binary_sensor.door_window_sensor_158d0001c2e60e
+  - light.laundry
   
 overview:
   name: ' Overview'

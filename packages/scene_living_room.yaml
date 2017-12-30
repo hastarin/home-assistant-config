@@ -1,34 +1,34 @@
 scene:
   - name: Living Room Off
     entities:
-      light.lounge_rear:
+      light.dining_room:
         state: off
-      light.lounge_front:
+      light.living_room:
         state: off
 
   - name: Living Room Normal
     entities:
-      light.lounge_rear:
+      light.living_room:
         state: on
         brightness: 255
-      light.lounge_front:
+      light.dining_room:
         state: on
         brightness: 255
 
   - name: Living Room Read
     entities:
-      light.lounge_rear:
+      light.dining_room:
         state: on
         brightness: 125
         color_temp: 500
-      light.lounge_front:
+      light.living_room:
         state: off
 
   - name: Living Room Dim
     entities:
-      light.lounge_rear:
+      light.dining_room:
         state: on
         brightness: 5
         color_temp: 500
-      light.lounge_front:
+      light.living_room:
         state: off
