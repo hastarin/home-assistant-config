@@ -35,6 +35,7 @@ logbook: !include_dir_merge_named logbook/
 logger:
   default: warn
 #  logs:
+#    homeassistant.components.xiaomi_aqara: debug
 #    homeassistant.components.sensor.dyson: debug
 #    homeassistant.components.fan.dyson: debug
 #    homeassistant.components.dyson: debug

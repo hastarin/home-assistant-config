@@ -1,7 +1,7 @@
 lights:
   name: Lights
   entities:
-  - light.aeotec_led_bulb_level
+  - light.entry_light_level
   - light.bathroom
   - light.bedroom
   - light.dining_room
@@ -236,7 +236,7 @@ overview:
   - sensor.netatmo_outdoor_temperature
   - sensor.netatmo_outdoor_humidity
   - sensor.aeotec_multisensor_motion_template_1
-  - light.aeotec_led_bulb_level
+  - light.entry_light_level
   - sensor.aeotec_multisensor_motion_template_2
   - sensor.garage_door_state
   - cover.the_bat_cave
@@ -272,6 +272,7 @@ zigbee_group:
   - binary_sensor.wall_switch_left_158d0001641a34
   - binary_sensor.wall_switch_right_158d0001641a34
   - binary_sensor.smoke_sensor_158d0001641a34
+  - binary_sensor.glass_door_sensor
 
 default_view:
   name: Home

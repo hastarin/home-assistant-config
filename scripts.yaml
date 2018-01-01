@@ -12,7 +12,7 @@ motion_entry_timer:
   - service: light.turn_off
     data:
       entity_id:
-      - light.aeotec_led_bulb_level
+      - light.entry_light_level
 motion_entry_bright:
   sequence:
   - service: script.turn_off
@@ -21,7 +21,7 @@ motion_entry_bright:
   - service: light.turn_on
     data:
       entity_id:
-      - light.aeotec_led_bulb_level
+      - light.entry_light_level
       brightness: 255
   - service: script.turn_on
     data:
@@ -34,7 +34,7 @@ motion_entry:
   - service: light.turn_on
     data:
       entity_id:
-      - light.aeotec_led_bulb_level
+      - light.entry_light_level
       brightness: 50
   - service: script.turn_on
     data:

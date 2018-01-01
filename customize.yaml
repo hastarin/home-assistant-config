@@ -61,7 +61,7 @@ binary_sensor.wall_switch_right_158d0001641a34:
   friendly_name: Wall Switch Right
 binary_sensor.switch_158d0001d8dbde:
   friendly_name: Bedside Switch
-light.aeotec_led_bulb_level:
+light.entry_light_level:
   friendly_name: Entry
 cover.the_bat_cave:
   google_assistant_type: switch
