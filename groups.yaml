@@ -1,9 +1,11 @@
 lights:
   name: Lights
   entities:
+  - switch.fluxer
   - light.entry_light_level
   - light.bathroom
   - light.bedroom
+  - light.kitchen
   - light.dining_room
   - light.living_room
   - light.office
@@ -285,6 +287,7 @@ default_view:
   - group.dyson_fan
   - group.zigbee_group
   - group.alarm
+  - group.ring
 
 alarm:
   name: Alarm Panel

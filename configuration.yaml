@@ -34,8 +34,10 @@ logbook: !include_dir_merge_named logbook/
 
 logger:
   default: warn
-#  logs:
-#    homeassistant.components.xiaomi_aqara: debug
+  logs:
+    homeassistant.components.camera.ring: debug
+    homeassistant.components.binary_sensor.ring: debug
+    homeassistant.components.sensor.ring: debug
 #    homeassistant.components.sensor.dyson: debug
 #    homeassistant.components.fan.dyson: debug
 #    homeassistant.components.dyson: debug
@@ -112,12 +114,19 @@ camera:
     name: Livingroom Camera
     mjpeg_url: http://127.0.0.1:8086/mjpeg
 
+shell_command:
+  start_motion: sudo service motion start
+  stop_motion: sudo service motion stop
+
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - key: !secret xiaomi_key
 
-alarm_control_panel:
-  - platform: manual
-    name: Home Alarm
-    code: 1234
+#switch:
+#  - platform: flux
+#    lights:
+#      - light.office
+#      - light.entry_light_level
+#    name: Fluxer
+#    disable_brightness_adjust: false

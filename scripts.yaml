@@ -28,17 +28,16 @@ motion_entry_bright:
       entity_id: script.motion_entry_timer
 motion_entry:
   sequence:
-  - service: script.turn_off
-    data:
+  - data:
       entity_id: script.motion_entry_timer
-  - service: light.turn_on
-    data:
+    service: script.turn_off
+  - data:
       entity_id:
       - light.entry_light_level
-      brightness: 50
-  - service: script.turn_on
-    data:
+    service: light.turn_on
+  - data:
       entity_id: script.motion_entry_timer
+    service: script.turn_on
 leaving:
   sequence:
   - service: light.turn_off

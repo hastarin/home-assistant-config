@@ -26,22 +26,19 @@
   action:
     service: script.motion_entry
 - id: entry_move_day
-  alias: Entry Movement Day
+  alias: Entry Movement
   initial_state: true
   hide_entity: false
   trigger:
-  - platform: state
-    entity_id: sensor.aeotec_multisensor_motion_template_1
+  - entity_id: sensor.aeotec_multisensor_motion_template_1
+    platform: state
     to: motion detected
   condition:
-  - condition: state
-    entity_id: sun.sun
-    state: above_horizon
   - condition: state
     entity_id: input_boolean.disable_auto_motion
     state: 'off'
   action:
-    service: script.motion_entry_bright
+  - service: script.motion_entry
 - id: entry_move_away
   alias: Entry Movement Away
   initial_state: true
@@ -79,7 +76,7 @@
     state: 'off'
   action:
   - data:
-      entity_id: media_player.living_room
+      entity_id: media_player.kitchen_speaker
       language: en
       message: Welcome home.  Closing your garage door.
     entity_id: switch.garage_door
@@ -130,17 +127,21 @@
   initial_state: true
   hide_entity: false
   trigger:
-  - platform: state
-    entity_id: device_tracker.jon_mobile
+  - entity_id: device_tracker.jon_mobile
     from: home
+    platform: state
     to: not_home
   condition:
   - condition: state
     entity_id: input_boolean.disable_auto_presence
     state: 'off'
   action:
-  - service: scene.turn_on
-    entity_id: scene.all_off
+  - entity_id: scene.all_off
+    service: scene.turn_on
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_arm_away
 - id: jon_sleeping
   alias: Jon Sleeping
   initial_state: true
@@ -304,7 +305,7 @@
     entity_id: sensor.netatmo_outdoor_temperature
   id: '1514418240105'
   trigger:
-  - below: '22'
+  - below: '21'
     entity_id: sensor.netatmo_indoor_temperature
     platform: numeric_state
 - action:
@@ -313,7 +314,7 @@
       entity_id: light.gateway_light_7811dc6c8ece
     service: light.turn_on
   - data:
-      entity_id: media_player.living_room
+      entity_id: media_player.kitchen_speaker
       language: en
       message: Your garage door is open
     service: tts.google_say
@@ -329,7 +330,7 @@
       entity_id: light.gateway_light_7811dc6c8ece
     service: light.turn_off
   - data:
-      entity_id: media_player.living_room
+      entity_id: media_player.kitchen_speaker
       language: en
       message: Your garage door is closed
     service: tts.google_say
@@ -354,21 +355,24 @@
     to: 'on'
 - action:
   - data:
-      ringtone_id: 13
-    service: xiaomi_aqara.play_ringtone
-  alias: Glass Door Change
+      entity_id: media_player.kitchen_speaker
+      language: en
+      message: The glass door is open.
+    service: tts.google_say
+  alias: Door Open - Rear Glass
   condition: []
   id: '1514691811019'
   trigger:
   - entity_id: binary_sensor.glass_door_sensor
-    from: 'off'
     platform: state
     to: 'on'
 - action:
   - data:
-      ringtone_id: 11
-    service: xiaomi_aqara.play_ringtone
-  alias: Laundry Door
+      entity_id: media_player.kitchen_speaker
+      language: en
+      message: The laundry door is open
+    service: tts.google_say
+  alias: Door Open - Laundry
   condition: []
   id: '1514695326727'
   trigger:
@@ -378,19 +382,8 @@
     to: 'on'
 - action:
   - data:
-      ringtone_id: 12
-    service: xiaomi_aqara.play_ringtone
-  alias: Laundry Door Close
-  condition: []
-  id: '1514695394268'
-  trigger:
-  - entity_id: binary_sensor.door_window_sensor_158d0001c2e60e
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      ringtone_id: 23
-    service: xiaomi_aqara.play_ringtone
+      entity_id: light.bathroom
+    service: light.toggle
   alias: Double Switch Left
   condition: []
   id: '1514769892807'
@@ -402,8 +395,8 @@
     platform: event
 - action:
   - data:
-      ringtone_id: 26
-    service: xiaomi_aqara.play_ringtone
+      entity_id: light.dining_room
+    service: light.toggle
   alias: Double Switch Right
   condition: []
   id: '1514770297578'
@@ -425,3 +418,125 @@
       entity_id: binary_sensor.wall_switch_both_158d0001641a34
     event_type: click
     platform: event
+- action:
+  - data:
+      entity_id: switch.air_conditioner
+    service: switch.turn_on
+  alias: Aircon Auto On
+  condition:
+  - above: '26'
+    condition: numeric_state
+    entity_id: sensor.netatmo_outdoor_temperature
+  id: '1515157255562'
+  trigger:
+  - above: '26'
+    entity_id: sensor.netatmo_indoor_temperature
+    platform: numeric_state
+- action:
+  - data:
+      message: Alarm Triggered!
+      title: ALARM!  Your alarm has been triggered.
+    service: notify.pb
+  - data:
+      message: Alarm Triggered!
+      title: ALARM!  Your alarm has been triggered.
+    service: notify.sms
+  - data:
+      brightness_pct: 100
+      entity_id: group.all_lights
+    service: light.turn_on
+  - data:
+      ringtone_id: 20
+    service: xiaomi_aqara.play_ringtone
+  alias: Alarm Triggered
+  condition: []
+  id: '1515203883015'
+  trigger:
+  - entity_id: alarm_control_panel.home_alarm
+    platform: state
+    to: triggered
+- action:
+  - data:
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_trigger
+  alias: Alarm Triggers Home
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_home
+  id: '1515204792836'
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001c2e60e
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.motion_sensor_158d0001d92086
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.aeotec_zw100_multisensor_6_usb_sensor
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.glass_door_sensor
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.garage_door
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_trigger
+  alias: Alarm Triggers Away
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_away
+  id: '1515204792816'
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001c2e60e
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.motion_sensor_158d0001d92086
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.aeotec_zw100_multisensor_6_sensor
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.aeotec_zw100_multisensor_6_usb_sensor
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.glass_door_sensor
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.garage_door
+    platform: state
+    to: 'on'
+- action:
+  - service: shell_command.start_motion
+  alias: Motion Capture Start
+  condition: []
+  id: '1515205685152'
+  trigger:
+  - entity_id: alarm_control_panel.home_alarm
+    platform: state
+    to: armed_away
+- action:
+  - service: shell_command.stop_motion
+  alias: Motion Capture Stop
+  condition: []
+  id: '1515205764813'
+  trigger:
+  - entity_id: alarm_control_panel.home_alarm
+    platform: state
+    to: disarmed
+- action:
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_disarm
+  alias: Jon Home
+  condition: []
+  id: '1515407554216'
+  trigger:
+  - entity_id: device_tracker.jon_mobile
+    platform: state
+    to: home
