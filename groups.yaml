@@ -288,6 +288,7 @@ default_view:
   - group.zigbee_group
   - group.alarm
   - group.ring
+  - group.batteries
 
 alarm:
   name: Alarm Panel
@@ -304,3 +305,16 @@ automation:
    - group.all_scripts
    - group.overrides
 
+batteries:
+  name: Batteries
+  entities:
+  - sensor.netatmo_outdoor_battery
+  - sensor.ring_front_door_horseshoe_cct_battery
+  - sensor.battery_bathroom_temperature
+  - sensor.battery_button_switch
+  - sensor.battery_dual_switch
+  - sensor.battery_glass_door
+  - sensor.battery_hall_motion
+  - sensor.battery_laundry_door
+  - sensor.battery_office_motion
+  - sensor.battery_smoke_sensor
