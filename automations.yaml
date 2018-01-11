@@ -305,7 +305,7 @@
     entity_id: sensor.netatmo_outdoor_temperature
   id: '1514418240105'
   trigger:
-  - below: '21'
+  - below: '22'
     entity_id: sensor.netatmo_indoor_temperature
     platform: numeric_state
 - action:
@@ -540,3 +540,58 @@
   - entity_id: device_tracker.jon_mobile
     platform: state
     to: home
+- action:
+  - data:
+      entity_id: light.bathroom
+    service: light.turn_on
+  alias: Bathroom Movement
+  condition:
+  - condition: state
+    entity_id: light.bathroom
+    state: 'off'
+  id: '1515663327938'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d00015a83dd
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.laundry
+    service: light.turn_on
+  - data:
+      message: Water Leak!
+      title: A water leak has been detected in the laundry.
+    service: notify.pb
+  - data:
+      message: Water Leak!
+      title: A water leak has been detected in the laundry.
+    service: notify.sms
+  - data:
+      entity_id: media_player.kitchen_speaker
+      message: A water leak has been detected in the laundry please check on it immediately!
+    service: tts.google_say
+  - data:
+      entity_id: switch.plug_158d00019d0f86
+    service: switch.turn_off
+  alias: Water Leak Detected
+  condition: []
+  id: '1515663851708'
+  trigger:
+  - entity_id: binary_sensor.water_leak_sensor_158d0001c34822
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - service: script.motion_bathroom_timer
+  alias: Bathroom No Movement
+  condition:
+  - condition: state
+    entity_id: input_boolean.disable_auto_motion
+    state: 'off'
+  id: '1515664356977'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d00015a83dd
+    from: 'on'
+    platform: state
+    to: 'off'

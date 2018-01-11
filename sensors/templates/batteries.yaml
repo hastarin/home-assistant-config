@@ -6,8 +6,8 @@ sensors:
   battery_office_motion:
     value_template: '{{ states.binary_sensor.motion_sensor_158d0001d92086.attributes.battery_level }}'
     unit_of_measurement: '%'
-  battery_office_motion:
-    value_template: '{{ states.binary_sensor.motion_sensor_158d0001d92086.attributes.battery_level }}'
+  battery_bathroom_motion:
+    value_template: '{{ states.binary_sensor.motion_sensor_158d00015a83dd.attributes.battery_level }}'
     unit_of_measurement: '%'
   battery_smoke_sensor:
     value_template: '{{ states.binary_sensor.smoke_sensor_158d0001a93896.attributes.battery_level }}'
@@ -23,6 +23,9 @@ sensors:
     unit_of_measurement: '%'
   battery_hall_motion:
     value_template: '{{ states.zwave.aeotec_zw100_multisensor_6.attributes.battery_level }}'
+    unit_of_measurement: '%'
+  battery_water_leak:
+    value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c34822.attributes.battery_level }}'
     unit_of_measurement: '%'
   battery_glass_door:
     value_template: '{{ states.zwave.glass_door.attributes.battery_level }}'

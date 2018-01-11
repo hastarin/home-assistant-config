@@ -83,12 +83,6 @@ wunderground:
   - sensor.pws_uv
   - sensor.pws_wind_degrees
 
-living_room:
-  name: Living Room Lights
-  entities:
-  - light.lounge_front
-  - light.lounge_rear
-
 bedroom:
   name: Bedroom
   icon: mdi:hotel
@@ -98,6 +92,7 @@ bedroom:
   - switch.air_conditioner
   - group.netatmo_indoor
   - group.jon
+  - media_player.bedroom_home
 
 office_sensors:
   name: Office Sensors
@@ -133,6 +128,8 @@ living_room_view:
   icon: mdi:sofa
   view: yes
   entities:
+  - light.living_room
+  - light.dining_room
   - camera.livingroom_camera
   - group.living_room
   - group.harmony
@@ -141,6 +138,7 @@ living_room_view:
   - media_player.shield_android_tv
   - media_player.plex
   - media_player.blackmagic
+  - media_player.kitchen_speaker
   - group.dyson_fan
   - group.ups
   - group.xiaomi_gateway
@@ -289,6 +287,7 @@ default_view:
   - group.alarm
   - group.ring
   - group.batteries
+  - media_player.galaxy_s8
 
 alarm:
   name: Alarm Panel
@@ -310,6 +309,7 @@ batteries:
   entities:
   - sensor.netatmo_outdoor_battery
   - sensor.ring_front_door_horseshoe_cct_battery
+  - sensor.battery_bathroom_motion
   - sensor.battery_bathroom_temperature
   - sensor.battery_button_switch
   - sensor.battery_dual_switch
