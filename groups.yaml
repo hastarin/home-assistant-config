@@ -97,8 +97,6 @@ bedroom:
 office_sensors:
   name: Office Sensors
   entities:
-  - sensor.office_temperature
-  - sensor.office_humidity
   - binary_sensor.motion_sensor_158d0001d92086
 
 office_view:

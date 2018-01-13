@@ -139,7 +139,7 @@
   - entity_id: scene.all_off
     service: scene.turn_on
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
 - id: jon_sleeping
@@ -530,7 +530,7 @@
     to: disarmed
 - action:
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
   alias: Jon Home
@@ -544,11 +544,11 @@
   - data:
       entity_id: light.bathroom
     service: light.turn_on
+  - data:
+      entity_id: script.motion_bathroom_timer
+    service: script.turn_off
   alias: Bathroom Movement
-  condition:
-  - condition: state
-    entity_id: light.bathroom
-    state: 'off'
+  condition: []
   id: '1515663327938'
   trigger:
   - entity_id: binary_sensor.motion_sensor_158d00015a83dd

@@ -1,13 +1,13 @@
 motion_bathroom_timer:
   sequence:
-  - delay: 00:05:00
+  - delay: 00:01:00
   - data:
       entity_id:
       - light.bathroom
     service: light.turn_off
 motion_office_timer:
   sequence:
-  - delay: 00:01:30
+  - delay: 00:01:00
   - data:
       entity_id:
       - light.office
