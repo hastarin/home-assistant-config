@@ -39,26 +39,6 @@
     state: 'off'
   action:
   - service: script.motion_entry
-- id: entry_move_away
-  alias: Entry Movement Away
-  initial_state: true
-  hide_entity: false
-  trigger:
-  - platform: state
-    entity_id: sensor.aeotec_multisensor_motion_template_1
-    to: motion detected
-  condition:
-  - condition: state
-    entity_id: input_boolean.disable_auto_motion
-    state: 'off'
-  - condition: state
-    entity_id: device_tracker.jon_mobile
-    state: not_home
-  action:
-    service: notify.pb
-    data:
-      title: Motion detected
-      message: There is motion in your entry hall!
 - id: garage_close
   alias: Garage Auto Close
   initial_state: true
@@ -84,28 +64,6 @@
   - data:
       entity_id: switch.garage_door
     service: switch.turn_off
-- id: garage_notify
-  alias: Garage Door Away
-  initial_state: true
-  hide_entity: false
-  trigger:
-  - entity_id: binary_sensor.garage_door
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: device_tracker.jon_mobile
-    state: not_home
-  action:
-  - data:
-      message: Your garage door is open!
-      title: Garage Door OPEN!
-    service: notify.pb
-  - data:
-      message: Your garage door is open!
-      title: Garage Door OPEN!
-    service: notify.sms
 - id: integra_off
   alias: Integra Off Night
   trigger:
@@ -127,10 +85,10 @@
   initial_state: true
   hide_entity: false
   trigger:
-  - entity_id: device_tracker.jon_mobile
-    from: home
+  - entity_id: binary_sensor.jon_is_home
+    from: 'on'
     platform: state
-    to: not_home
+    to: 'off'
   condition:
   - condition: state
     entity_id: input_boolean.disable_auto_presence
@@ -139,7 +97,7 @@
   - entity_id: scene.all_off
     service: scene.turn_on
   - data:
-      code: ***REMOVED***
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
 - id: jon_sleeping
@@ -530,16 +488,17 @@
     to: disarmed
 - action:
   - data:
-      code: ***REMOVED***
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
-  alias: Jon Home
+  alias: Jon Arriving Home
   condition: []
   id: '1515407554216'
   trigger:
-  - entity_id: device_tracker.jon_mobile
+  - entity_id: binary_sensor.jon_is_home
+    from: 'off'
     platform: state
-    to: home
+    to: 'on'
 - action:
   - data:
       entity_id: light.bathroom
