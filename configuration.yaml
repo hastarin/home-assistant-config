@@ -35,9 +35,11 @@ logbook: !include_dir_merge_named logbook/
 logger:
   default: warn
   logs:
-    homeassistant.components.camera.ring: debug
-    homeassistant.components.binary_sensor.ring: debug
-    homeassistant.components.sensor.ring: debug
+    homeassistant.components.xiaomi_aqara: debug
+    homeassistant.components.vacuum.xiaomi_miio: debug
+#    homeassistant.components.camera.ring: debug
+#    homeassistant.components.binary_sensor.ring: debug
+#    homeassistant.components.sensor.ring: debug
 #    homeassistant.components.sensor.dyson: debug
 #    homeassistant.components.fan.dyson: debug
 #    homeassistant.components.dyson: debug
@@ -75,7 +77,7 @@ device_tracker:
     interval_seconds: 10
     consider_home: 120
   - platform: owntracks
-  - platform: bluetooth_tracker
+#  - platform: bluetooth_tracker
 
 ring:
   username: !secret ring_user
@@ -114,12 +116,12 @@ downloader:
 camera:
   - platform: ring
     name: Ring Video Doorbell
-  - platform: ffmpeg
-    name: Front Door Camera
-    input: /mnt/elements/downloads/latest.mp4
-  - platform: mjpeg
-    name: Livingroom Camera
-    mjpeg_url: http://127.0.0.1:8086/mjpeg
+#  - platform: ffmpeg
+#    name: Front Door Camera
+#    input: /mnt/elements/downloads/latest.mp4
+#  - platform: mjpeg
+#    name: Livingroom Camera
+#    mjpeg_url: http://127.0.0.1:8086/mjpeg
 
 shell_command:
   start_motion: sudo service motion start
@@ -137,3 +139,8 @@ xiaomi_aqara:
 #      - light.entry_light_level
 #    name: Fluxer
 #    disable_brightness_adjust: false
+
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.1.187
+    token: !secret roborock_token
