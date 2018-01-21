@@ -41,6 +41,7 @@ motion_entry:
   - data:
       entity_id:
       - light.entry_light_level
+      brightness: 85
     service: light.turn_on
   - data:
       entity_id: script.motion_entry_timer

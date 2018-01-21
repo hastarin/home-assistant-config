@@ -13,9 +13,9 @@ switch.air_conditioner:
 light.gateway_light_7811dc6c8ece:
   friendly_name: Gateway
 binary_sensor.door_window_sensor_158d0001c2e60e:
-  friendly_name: Laundry Door Sensor
+  friendly_name: Door Sensor - Laundry
 binary_sensor.motion_sensor_158d0001d92086:
-  friendly_name: Motion Sensor (Xiaomi)
+  friendly_name: Motion Sensor Office
 sensor.temperature_158d0001fead1f:
   friendly_name: Bathroom Temperature
 sensor.humidity_158d0001fead1f:
@@ -67,3 +67,11 @@ cover.the_bat_cave:
   google_assistant_type: switch
 binary_sensor.motion_sensor_158d00015a83dd:
   friendly_name: Motion Sensor Bathroom
+binary_sensor.door_window_sensor_158d0001fd6e59:
+  friendly_name: Door Sensor - Garage Rear
+binary_sensor.door_window_sensor_158d00020193e4:
+  friendly_name: Door Sensor - Front
+zwave.glass_door:
+  friendly_name: Door Sensor - Glass Rear
+binary_sensor.glass_door_sensor:
+  icon: mdi:glassdoor

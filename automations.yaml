@@ -38,7 +38,7 @@
     entity_id: input_boolean.disable_auto_motion
     state: 'off'
   action:
-  - service: script.motion_entry
+  - service: script.motion_entry_bright
 - id: garage_close
   alias: Garage Auto Close
   initial_state: true
@@ -427,16 +427,16 @@
   - entity_id: binary_sensor.door_window_sensor_158d0001c2e60e
     platform: state
     to: 'on'
-  - entity_id: binary_sensor.motion_sensor_158d0001d92086
-    platform: state
-    to: 'on'
-  - entity_id: binary_sensor.aeotec_zw100_multisensor_6_usb_sensor
+  - entity_id: binary_sensor.door_window_sensor_158d0001fd6e59
     platform: state
     to: 'on'
   - entity_id: binary_sensor.glass_door_sensor
     platform: state
     to: 'on'
   - entity_id: binary_sensor.garage_door
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.door_window_sensor_158d00020193e4
     platform: state
     to: 'on'
 - action:
@@ -466,6 +466,12 @@
     platform: state
     to: 'on'
   - entity_id: binary_sensor.garage_door
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.door_window_sensor_158d0001fd6e59
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.door_window_sensor_158d00020193e4
     platform: state
     to: 'on'
 - action:
