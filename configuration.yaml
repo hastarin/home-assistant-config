@@ -60,10 +60,9 @@ mqtt:
   password: !secret mqtt_pwd
 
 emulated_hue:
-  type: alexa
-#  host_ip: 192.168.1.10
+  host_ip: 192.168.1.10
   listen_port: 5000
-#  advertise_ip: 192.168.1.10
+  advertise_ip: 192.168.1.10
 #  advertise_port: 80
   expose_by_default: true
   exposed_domains:
@@ -144,3 +143,14 @@ vacuum:
   - platform: xiaomi_miio
     host: 192.168.1.187
     token: !secret roborock_token
+
+history_graph:
+  temp_graph:
+    name: Temperature
+    entities:
+      - sensor.netatmo_indoor_temperature
+      - sensor.netatmo_outdoor_temperature
+      - sensor.kitchen_temperature
+      - sensor.aeotec_zw100_multisensor_6_temperature
+      - sensor.aeotec_zw100_multisensor_6_usb_temperature
+      - sensor.temperature_158d0001fead1f

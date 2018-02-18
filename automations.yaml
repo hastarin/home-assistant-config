@@ -560,3 +560,33 @@
     from: 'on'
     platform: state
     to: 'off'
+- action:
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_arm_home
+  alias: Vacuum On with Alarm
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_away
+  id: '1516741880050'
+  trigger:
+  - entity_id: vacuum.xiaomi_vacuum_cleaner
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_arm_away
+  alias: Vacuum Off with Alarm
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_home
+  id: '1516741880051'
+  trigger:
+  - entity_id: vacuum.xiaomi_vacuum_cleaner
+    platform: state
+    to: 'off'

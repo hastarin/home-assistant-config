@@ -117,9 +117,9 @@ harmony:
 dyson_fan:
   name: Dyson Pure Hot+Cool
   entities:
-  - fan.pure_hotcool
-  - sensor.pure_hotcool_temperature
-  - sensor.pure_hotcool_humidity
+  - fan.kitchen
+  - sensor.kitchen_temperature
+  - sensor.kitchen_humidity
  
 living_room_view:
   name: Living Room
@@ -176,6 +176,7 @@ weather_view:
   icon: mdi:cloud
   view: yes
   entities:
+  - history_graph.temperature
   - group.netatmo_indoor
   - group.entry_sensors
   - group.office_sensors
