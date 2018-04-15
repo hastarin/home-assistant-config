@@ -36,3 +36,6 @@ sensors:
   battery_water_leak:
     value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c34822.attributes.battery_level }}'
     unit_of_measurement: '%'
+  battery_temperature_office:
+    value_template: '{{ states.sensor.temperature_158d0001c2c208.attributes.battery_level }}'
+    unit_of_measurement: '%'

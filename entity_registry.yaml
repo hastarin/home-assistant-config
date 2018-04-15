@@ -1,0 +1,208 @@
+binary_sensor.wall_switch_both_158d0001641a34:
+  name:
+  platform: xiaomi_aqara
+  unique_id: dual_channel158d0001641a34
+binary_sensor.smoke_sensor_158d0001a93896:
+  name:
+  platform: xiaomi_aqara
+  unique_id: alarm158d0001a93896
+binary_sensor.motion_sensor_158d00015a83dd:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00015a83dd
+binary_sensor.water_leak_sensor_158d0001c34822:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001c34822
+binary_sensor.door_window_sensor_158d0001fd6e59:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001fd6e59
+binary_sensor.door_window_sensor_158d00020193e4:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00020193e4
+binary_sensor.motion_sensor_158d0001d92086:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001d92086
+binary_sensor.cube_158d0001038d6d:
+  name:
+  platform: xiaomi_aqara
+  unique_id: cube158d0001038d6d
+binary_sensor.door_window_sensor_158d0001c2e60e:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001c2e60e
+binary_sensor.switch_158d0001d8dbde:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001d8dbde
+binary_sensor.wall_switch_left_158d0001641a34:
+  name:
+  platform: xiaomi_aqara
+  unique_id: channel_0158d0001641a34
+binary_sensor.wall_switch_right_158d0001641a34:
+  name:
+  platform: xiaomi_aqara
+  unique_id: channel_1158d0001641a34
+switch.plug_158d00019d0f86:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00019d0f86
+switch.plug_158d0001718753:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001718753
+sensor.temperature_158d0001c2c208:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001c2c208
+sensor.humidity_158d0001c2c208:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001c2c208
+sensor.illumination_7811dc6c8ece:
+  name:
+  platform: xiaomi_aqara
+  unique_id: illumination7811dc6c8ece
+sensor.temperature_158d0001fead1f:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001fead1f
+sensor.humidity_158d0001fead1f:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001fead1f
+media_player.shield_android_tv:
+  name:
+  platform: plex
+  unique_id: df122e2f13b62191-com-plexapp-android
+media_player.galaxy_s8:
+  name:
+  platform: plex
+  unique_id: b031280131dd765f-com-plexapp-android
+light.gateway_light_7811dc6c8ece:
+  name:
+  platform: xiaomi_aqara
+  unique_id: rgb7811dc6c8ece
+binary_sensor.aeotec_zw100_multisensor_6_usb_sensor:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126794752
+sensor.aeotec_zw100_multisensor_6_usb_temperature:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126811154
+sensor.aeotec_zw100_multisensor_6_usb_luminance:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126811186
+sensor.aeotec_zw100_multisensor_6_usb_relative_humidity:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126811218
+sensor.aeotec_zw100_multisensor_6_usb_ultraviolet:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126811570
+sensor.aeotec_zw100_multisensor_6_usb_alarm_type:
+  name:
+  platform: zwave
+  unique_id: 5-72057594127859713
+sensor.aeotec_zw100_multisensor_6_usb_alarm_level:
+  name:
+  platform: zwave
+  unique_id: 5-72057594127859729
+sensor.aeotec_zw100_multisensor_6_usb_sourcenodeid:
+  name:
+  platform: zwave
+  unique_id: 5-72057594127859745
+sensor.aeotec_zw100_multisensor_6_usb_burglar:
+  name:
+  platform: zwave
+  unique_id: 5-72057594127859873
+binary_sensor.aeotec_zw100_multisensor_6_sensor:
+  name:
+  platform: zwave
+  unique_id: 7-72057594160349184
+sensor.aeotec_zw100_multisensor_6_temperature:
+  name:
+  platform: zwave
+  unique_id: 7-72057594160365586
+sensor.aeotec_zw100_multisensor_6_luminance:
+  name:
+  platform: zwave
+  unique_id: 7-72057594160365618
+sensor.aeotec_zw100_multisensor_6_relative_humidity:
+  name:
+  platform: zwave
+  unique_id: 7-72057594160365650
+sensor.aeotec_zw100_multisensor_6_ultraviolet:
+  name:
+  platform: zwave
+  unique_id: 7-72057594160366002
+sensor.aeotec_zw100_multisensor_6_alarm_type:
+  name:
+  platform: zwave
+  unique_id: 7-72057594161414145
+sensor.aeotec_zw100_multisensor_6_alarm_level:
+  name:
+  platform: zwave
+  unique_id: 7-72057594161414161
+sensor.aeotec_zw100_multisensor_6_sourcenodeid:
+  name:
+  platform: zwave
+  unique_id: 7-72057594161414177
+sensor.aeotec_zw100_multisensor_6_burglar:
+  name:
+  platform: zwave
+  unique_id: 7-72057594161414305
+binary_sensor.glass_door_sensor:
+  name:
+  platform: zwave
+  unique_id: 8-72057594177126400
+sensor.glass_door_alarm_type:
+  name:
+  platform: zwave
+  unique_id: 8-72057594178191361
+sensor.glass_door_alarm_level:
+  name:
+  platform: zwave
+  unique_id: 8-72057594178191377
+sensor.glass_door_sourcenodeid:
+  name:
+  platform: zwave
+  unique_id: 8-72057594178191393
+sensor.glass_door_access_control:
+  name:
+  platform: zwave
+  unique_id: 8-72057594178191505
+light.entry_light_level:
+  name:
+  platform: zwave
+  unique_id: 9-72057594193739777
+switch.garage_light_switch:
+  name:
+  platform: wemo
+  unique_id: 221331K1300012
+switch.air_conditioner:
+  name:
+  platform: wemo
+  unique_id: 221551K1200430
+media_player.kitchen_speaker:
+  name:
+  platform: cast
+  unique_id: 7cdf4af6-cf50-8f45-4fd3-48405b21a2ef
+media_player.shield:
+  name:
+  platform: cast
+  unique_id: d145d10e-34d5-6035-4845-af6f25d2d112
+media_player.bedroom_home:
+  name:
+  platform: cast
+  unique_id: 02ed6a1a-078a-a979-3abf-95bb6f96661f
+media_player.living_room:
+  name:
+  platform: cast
+  unique_id: 16bafbea-dc1c-00e3-08a2-3b1c6c816d9c

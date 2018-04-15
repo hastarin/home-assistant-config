@@ -98,6 +98,8 @@ office_sensors:
   name: Office Sensors
   entities:
   - binary_sensor.motion_sensor_158d0001d92086
+  - sensor.humidity_158d0001c2c208
+  - sensor.temperature_158d0001c2c208
 
 office_view:
   name: Office
@@ -263,6 +265,8 @@ bathroom_sensors:
   entities:
   - sensor.temperature_158d0001fead1f
   - sensor.humidity_158d0001fead1f
+
+
 
 zigbee_group:
   name: Xiaomi Switches

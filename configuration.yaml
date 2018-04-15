@@ -83,7 +83,6 @@ ring:
   password: !secret ring_pwd
 
 zwave:
-  new_entity_ids: true
   usb_path: /dev/ttyACM0
   config_path: /home/homeassistant/.homeassistant/openzwave-config 
   device_config: !include zwave_device_config.yaml

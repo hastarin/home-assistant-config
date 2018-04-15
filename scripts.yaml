@@ -58,3 +58,119 @@ leaving:
     data:
       entity_id:
       - switch.garage_door
+living_room_soft_on:
+  alias: Living Room Bright
+  sequence:
+  - data:
+      brightness_pct: 10
+      color_temp: 370
+      entity_id: light.living_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 10
+      color_temp: 370
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 30
+      color_temp: 320
+      entity_id: light.living_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 30
+      color_temp: 320
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 50
+      color_temp: 260
+      entity_id: light.living_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 50
+      color_temp: 260
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 70
+      color_temp: 210
+      entity_id: light.living_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 70
+      color_temp: 210
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 90
+      color_temp: 164
+      entity_id: light.living_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 90
+      color_temp: 164
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 100
+      color_temp: 154
+      entity_id: light.living_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 100
+      color_temp: 154
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 100
+      color_temp: 154
+      entity_id: light.living_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 100
+      color_temp: 154
+      entity_id: light.dining_room
+    service: light.turn_on
+living_room_dim:
+  alias: Living Room Dim
+  sequence:
+  - data:
+      brightness_pct: 30
+      color_temp: 154
+      entity_id: light.dining_room
+    service: light.turn_on
+  - data:
+      brightness_pct: 30
+      color_temp: 154
+      entity_id: light.living_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 20
+      color_temp: 370
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 20
+      color_temp: 370
+      entity_id: light.living_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 10
+      color_temp: 370
+      entity_id: light.dining_room
+    service: light.turn_on
+  - delay: 00:00:01
+  - data:
+      brightness_pct: 10
+      color_temp: 370
+      entity_id: light.living_room
+    service: light.turn_on

@@ -75,3 +75,7 @@ zwave.glass_door:
   friendly_name: Door Sensor - Glass Rear
 binary_sensor.glass_door_sensor:
   icon: mdi:glassdoor
+sensor.temperature_158d0001c2c208:
+  friendly_name: Office Temperature
+sensor.humidity_158d0001c2c208:
+  friendly_name: Office Humidity

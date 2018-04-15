@@ -340,7 +340,7 @@
     to: 'on'
 - action:
   - data:
-      entity_id: light.bathroom
+      entity_id: light.living_room
     service: light.toggle
   alias: Double Switch Left
   condition: []
@@ -364,11 +364,28 @@
     event_type: click
     platform: event
 - action:
-  - data:
-      ringtone_id: 11
-    service: xiaomi_aqara.play_ringtone
+  - data: {}
+    service: script.living_room_dim
+  alias: Double Switch Both Off
+  condition:
+  - condition: state
+    entity_id: light.living_room
+    state: 'on'
+  id: '1514770445169'
+  trigger:
+  - event_data:
+      click_type: both
+      entity_id: binary_sensor.wall_switch_both_158d0001641a34
+    event_type: click
+    platform: event
+- action:
+  - data: {}
+    service: script.living_room_soft_on
   alias: Double Switch Both
-  condition: []
+  condition:
+  - condition: state
+    entity_id: light.living_room
+    state: 'off'
   id: '1514770445168'
   trigger:
   - event_data:
@@ -590,3 +607,15 @@
   - entity_id: vacuum.xiaomi_vacuum_cleaner
     platform: state
     to: 'off'
+- action:
+  - service: vacuum.turn_on
+  alias: Vacuum while at work
+  condition:
+  - after: 08:00
+    before: '10:30'
+    condition: time
+  id: '1521148590273'
+  trigger:
+  - entity_id: device_tracker.jon_mobile
+    platform: state
+    to: Work
