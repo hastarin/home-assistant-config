@@ -1,6 +1,8 @@
 switch.plug_158d00019d0f86:
   friendly_name: Washing Machine Plug
   icon: mdi:washing-machine
+switch.plug_158d0001718753:
+  friendly_name: Insect Plug
 switch.wake_on_lan:
   friendly_name: Wake PC
   icon: mdi:monitor
@@ -79,3 +81,5 @@ sensor.temperature_158d0001c2c208:
   friendly_name: Office Temperature
 sensor.humidity_158d0001c2c208:
   friendly_name: Office Humidity
+cover.curtain_158d0001ef4394:
+  friendly_name: Living Room Curtains

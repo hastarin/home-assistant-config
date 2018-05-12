@@ -5,17 +5,6 @@ homeassistant:
       icon: mdi:zip-box
       friendly_name: Backup Home Assistant
 
-automation:
-  - alias: BACKUP (DAILY) Home Assistant
-    hide_entity: True
-    trigger:
-      platform: time
-      hours: 1
-      minutes: 1
-      seconds: 0
-    action:
-      - service: shell_command.backup
-
 shell_command:
   # BACKUP - 1 FILE PER DAY
   backup: 7z u -r "/mnt/NASJB/backup/HomeAssistant/backup-$(date +"%Y%m%d").7z" /home/homeassistant/.homeassistant

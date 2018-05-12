@@ -128,6 +128,7 @@ living_room_view:
   icon: mdi:sofa
   view: yes
   entities:
+  - cover.curtain_158d0001ef4394
   - light.living_room
   - light.dining_room
   - camera.livingroom_camera
@@ -296,7 +297,6 @@ default_view:
   - group.jon
   - group.lights
   - group.dyson_fan
-  - group.zigbee_group
   - group.alarm
   - group.ring
   - group.door_sensors
@@ -318,6 +318,7 @@ automation:
    - group.all_automations
    - group.all_scripts
    - group.overrides
+   - group.battery_alert
 
 batteries:
   name: Batteries

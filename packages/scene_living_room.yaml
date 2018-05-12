@@ -20,7 +20,7 @@ scene:
       light.dining_room:
         state: on
         brightness: 125
-        color_temp: 500
+        color_temp: 154
       light.living_room:
         state: off
 
@@ -29,6 +29,6 @@ scene:
       light.dining_room:
         state: on
         brightness: 5
-        color_temp: 500
+        color_temp: 370
       light.living_room:
         state: off

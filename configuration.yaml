@@ -58,15 +58,17 @@ mqtt:
   client_id: home-assistant-1
   username: !secret mqtt_username
   password: !secret mqtt_pwd
+  discovery: true
+  discovery_prefix: homeassistant
 
-emulated_hue:
-  host_ip: 192.168.1.10
-  listen_port: 5000
-  advertise_ip: 192.168.1.10
+#emulated_hue:
+#  host_ip: 192.168.1.10
+#  listen_port: 5000
+#  advertise_ip: 192.168.1.10
 #  advertise_port: 80
-  expose_by_default: true
-  exposed_domains:
-    - light
+#  expose_by_default: true
+#  exposed_domains:
+#    - light
 
 device_tracker:
   - platform: netgear
@@ -117,9 +119,9 @@ camera:
 #  - platform: ffmpeg
 #    name: Front Door Camera
 #    input: /mnt/elements/downloads/latest.mp4
-#  - platform: mjpeg
-#    name: Livingroom Camera
-#    mjpeg_url: http://127.0.0.1:8086/mjpeg
+  - platform: mjpeg
+    name: Livingroom Camera
+    mjpeg_url: http://127.0.0.1:8086/mjpeg
 
 shell_command:
   start_motion: sudo service motion start
@@ -130,13 +132,18 @@ xiaomi_aqara:
   gateways:
     - key: !secret xiaomi_key
 
-#switch:
-#  - platform: flux
-#    lights:
-#      - light.office
-#      - light.entry_light_level
-#    name: Fluxer
-#    disable_brightness_adjust: false
+switch:
+  - platform: flux
+    lights:
+      - light.bathroom
+      - light.bedroom
+      - light.office
+    name: Fluxer
+    start_colortemp: 1480
+    sunset_colortemp: 1200
+    stop_colortemp: 1000
+    mode: mired
+#    disable_brightness_adjust: False
 
 vacuum:
   - platform: xiaomi_miio
@@ -153,3 +160,25 @@ history_graph:
       - sensor.aeotec_zw100_multisensor_6_temperature
       - sensor.aeotec_zw100_multisensor_6_usb_temperature
       - sensor.temperature_158d0001fead1f
+
+cloud:
+  alexa:
+    filter:
+#      include_entities:
+      include_domains:
+        - switch
+        - light
+        - fan
+        - cover
+        - zwave
+#      exclude_entities:
+  google_actions:
+    filter:
+#      include_entities:
+      include_domains:
+        - switch
+        - light
+        - fan
+        - cover
+        - zwave
+#      exclude_entities:

@@ -155,7 +155,7 @@
     platform: state
     entity_id: updater.updater
   action:
-    service: notify.sms
+    service: notify.pb
     data:
       message: Update for Home Assistant is available.
 - id: zwave_heal
@@ -413,10 +413,6 @@
       title: ALARM!  Your alarm has been triggered.
     service: notify.pb
   - data:
-      message: Alarm Triggered!
-      title: ALARM!  Your alarm has been triggered.
-    service: notify.sms
-  - data:
       brightness_pct: 100
       entity_id: group.all_lights
     service: light.turn_on
@@ -545,10 +541,6 @@
       message: Water Leak!
       title: A water leak has been detected in the laundry.
     service: notify.pb
-  - data:
-      message: Water Leak!
-      title: A water leak has been detected in the laundry.
-    service: notify.sms
   - data:
       entity_id: media_player.kitchen_speaker
       message: A water leak has been detected in the laundry please check on it immediately!
