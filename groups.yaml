@@ -239,6 +239,7 @@ overview:
   name: ' Overview'
   control: hidden
   entities:
+  - sensor.power_usage
   - cover.curtain_158d0001ef4394
   - sensor.netatmo_indoor_temperature
   - sensor.netatmo_indoor_humidity

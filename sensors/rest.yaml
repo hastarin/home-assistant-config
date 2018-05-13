@@ -1,0 +1,6 @@
+platform: rest
+name: Power Usage
+resource: !secret wattvision_latest_rate
+value_template: '{{value_json.data[0].v}}'
+force_update: true
+unit_of_measurement: "W"
