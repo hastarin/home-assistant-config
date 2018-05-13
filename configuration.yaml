@@ -182,3 +182,6 @@ cloud:
         - cover
         - zwave
 #      exclude_entities:
+
+influxdb:
+
