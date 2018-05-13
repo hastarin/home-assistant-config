@@ -122,27 +122,31 @@ dyson_fan:
   - fan.kitchen
   - sensor.kitchen_temperature
   - sensor.kitchen_humidity
+
+a_living_room_panel:
+  name: Controls
+  control: hidden
+  entities:
+  - light.living_room
+  - light.dining_room
+  - cover.curtain_158d0001ef4394
  
 living_room_view:
   name: Living Room
   icon: mdi:sofa
   view: yes
   entities:
-  - cover.curtain_158d0001ef4394
-  - light.living_room
-  - light.dining_room
+  - group.a_living_room_panel
   - camera.livingroom_camera
-  - group.living_room
+  - group.dyson_fan
   - group.harmony
+  - group.xiaomi_gateway
   - media_player.integra
   - media_player.shield
   - media_player.shield_android_tv
   - media_player.plex
   - media_player.blackmagic
   - media_player.kitchen_speaker
-  - group.dyson_fan
-  - group.ups
-  - group.xiaomi_gateway
 
 bathroom_view:
   name: Bathroom
@@ -179,7 +183,7 @@ weather_view:
   icon: mdi:cloud
   view: yes
   entities:
-  - history_graph.temperature
+  - group.ring
   - group.netatmo_indoor
   - group.entry_sensors
   - group.office_sensors
@@ -234,6 +238,7 @@ overview:
   name: ' Overview'
   control: hidden
   entities:
+  - cover.curtain_158d0001ef4394
   - sensor.netatmo_indoor_temperature
   - sensor.netatmo_indoor_humidity
   - switch.air_conditioner
@@ -244,6 +249,7 @@ overview:
   - sensor.aeotec_multisensor_motion_template_2
   - sensor.garage_door_state
   - cover.the_bat_cave
+  - vacuum.xiaomi_vacuum_cleaner 
   
 ups:
   name: UPS
@@ -293,16 +299,12 @@ default_view:
   icon: mdi:home
   view: yes
   entities:
-  - group.overview
-  - group.jon
-  - group.lights
-  - group.dyson_fan
   - group.alarm
-  - group.ring
+  - group.lights
+  - group.overview
   - group.door_sensors
-  - group.batteries
+  - group.jon
   - media_player.galaxy_s8
-  - vacuum.xiaomi_vacuum_cleaner 
 
 alarm:
   name: Alarm Panel
@@ -314,25 +316,45 @@ automation:
   view: yes
   icon: mdi:auto-fix
   entities:
-   - group.all_scenes
-   - group.all_automations
-   - group.all_scripts
-   - group.overrides
-   - group.battery_alert
+  - group.all_scenes
+  - group.all_automations
+  - group.all_scripts
+  - group.overrides
 
-batteries:
-  name: Batteries
+battery_status:
+  name: Battery Status
+  icon: mdi:battery-charging
   entities:
-  - sensor.ring_front_door_horseshoe_cct_battery
+  - sensor.bathroom_humidity_battery
+  - sensor.bathroom_temperature_battery
+  - sensor.bedside_switch_battery
+  - sensor.cube_158d0001038d6d_battery
+  - sensor.door_sensor__front_battery
+  - sensor.door_sensor__garage_rear_battery
+  - sensor.door_sensor__glass_rear_battery
+  - sensor.entry_sensor_battery
+  - sensor.garage_sensor_battery
+  - sensor.insect_plug_battery
+  - sensor.living_room_curtains_battery
+  - sensor.motion_sensor_bathroom_battery
+  - sensor.motion_sensor_office_battery
   - sensor.netatmo_outdoor_battery
-  - sensor.battery_smoke_sensor
-  - sensor.battery_door_glass
-  - sensor.battery_door_front
-  - sensor.battery_door_laundry
-  - sensor.battery_door_garage_rear
-  - sensor.battery_motion_hall
-  - sensor.battery_motion_bathroom
-  - sensor.battery_motion_office
-  - sensor.battery_temperature_bathroom
-  - sensor.battery_button_switch
-  - sensor.battery_dual_switch
+  - sensor.nut_ups_battery_temperature
+  - sensor.office_humidity_battery
+  - sensor.office_temperature_battery
+  - sensor.ring_front_door_horseshoe_cct_battery
+  - sensor.wall_switch_both_battery
+  - sensor.wall_switch_left_battery
+  - sensor.wall_switch_right_battery
+  - sensor.washing_machine_plug_battery
+  - sensor.water_leak_sensor_158d0001c34822_battery
+  - sensor.xiaomi_vacuum_cleaner_battery
+
+batteries_view:
+  name: Batteries
+  icon: mdi:battery-charging
+  view: true
+  entities:
+  - group.battery_alert
+  - group.battery_status
+  - group.ups

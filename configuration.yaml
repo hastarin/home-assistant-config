@@ -150,17 +150,6 @@ vacuum:
     host: 192.168.1.187
     token: !secret roborock_token
 
-history_graph:
-  temp_graph:
-    name: Temperature
-    entities:
-      - sensor.netatmo_indoor_temperature
-      - sensor.netatmo_outdoor_temperature
-      - sensor.kitchen_temperature
-      - sensor.aeotec_zw100_multisensor_6_temperature
-      - sensor.aeotec_zw100_multisensor_6_usb_temperature
-      - sensor.temperature_158d0001fead1f
-
 cloud:
   alexa:
     filter:
