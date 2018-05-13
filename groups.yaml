@@ -229,6 +229,7 @@ jon:
 
 laundry_group:
   name: Laundry
+  control: hidden
   entities:
   - switch.plug_158d00019d0f86
   - binary_sensor.door_window_sensor_158d0001c2e60e
