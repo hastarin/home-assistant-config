@@ -611,3 +611,15 @@
   - entity_id: device_tracker.jon_mobile
     platform: state
     to: Work
+- id: '1526219825995'
+  alias: Jon Waking Up
+  trigger:
+  - entity_id: binary_sensor.jon_sleeping
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: cover.curtain_158d0001ef4394
+    service: cover.open_cover

@@ -121,7 +121,7 @@ camera:
 #    input: /mnt/elements/downloads/latest.mp4
   - platform: mjpeg
     name: Livingroom Camera
-    mjpeg_url: http://127.0.0.1:8086/mjpeg
+    mjpeg_url: http://127.0.0.1:8084/mjpeg
 
 shell_command:
   start_motion: sudo service motion start
