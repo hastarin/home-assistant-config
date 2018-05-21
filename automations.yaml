@@ -623,3 +623,54 @@
   - data:
       entity_id: cover.curtain_158d0001ef4394
     service: cover.open_cover
+- id: '1526899238902'
+  alias: Curtain Close Sunset
+  trigger:
+  - event: sunset
+    offset: -00:30:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: cover.curtain_158d0001ef4394
+    state: open
+  - below: '23'
+    condition: numeric_state
+    entity_id: sensor.kitchen_temperature
+  - above: '0'
+    condition: numeric_state
+    entity_id: sensor.comparison_temperature
+  action:
+  - data:
+      entity_id: cover.curtain_158d0001ef4394
+    service: cover.close_cover
+- id: '1526900784652'
+  alias: Curtain Close Cooling
+  trigger:
+  - above: '23'
+    entity_id: sensor.kitchen_temperature
+    platform: numeric_state
+  condition:
+  - below: '0'
+    condition: numeric_state
+    entity_id: sensor.comparison_temperature
+  action:
+  - data:
+      entity_id: cover.curtain_158d0001ef4394
+    service: cover.close_cover
+- id: '1526901262371'
+  alias: Curtain Close Heating
+  trigger:
+  - below: '18'
+    entity_id: sensor.kitchen_temperature
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: cover.curtain_158d0001ef4394
+    state: open
+  - above: '0'
+    condition: numeric_state
+    entity_id: sensor.comparison_temperature
+  action:
+  - data:
+      entity_id: cover.curtain_158d0001ef4394
+    service: cover.close_cover
