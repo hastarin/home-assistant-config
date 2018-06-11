@@ -93,6 +93,7 @@ bedroom:
   - group.netatmo_indoor
   - group.jon
   - media_player.bedroom_home
+  - group.bedroom_sensors
 
 office_sensors:
   name: Office Sensors
@@ -185,7 +186,7 @@ weather_view:
   entities:
   - group.ring
   - group.netatmo_indoor
-  - group.entry_sensors
+  - group.bedroom_sensors
   - group.office_sensors
   - group.garage_sensors
   - group.netatmo_outdoor
@@ -199,21 +200,21 @@ cameras_view:
   - camera.livingroom_camera
   - camera.last_ring_video
 
-entry_sensors:
-  name: Entry Sensors
+bedroom_sensors:
+  name: Bedroom Sensors
   entities:
-  - sensor.aeotec_multisensor_motion_template_1
-  - sensor.aeotec_zw100_multisensor_6_luminance
-  - sensor.aeotec_zw100_multisensor_6_relative_humidity
-  - sensor.aeotec_zw100_multisensor_6_temperature
-  - sensor.aeotec_zw100_multisensor_6_ultraviolet
+  - sensor.aeotec_multisensor_motion_template_2
+  - sensor.aeotec_zw100_multisensor_6_luminance_2
+  - sensor.aeotec_zw100_multisensor_6_relative_humidity_2
+  - sensor.aeotec_zw100_multisensor_6_temperature_2
+  - sensor.aeotec_zw100_multisensor_6_ultraviolet_2
 
 garage_sensors:
   name: Garage Sensors
   entities:
   - sensor.garage_door_status
   - sensor.garage_door_state
-  - sensor.aeotec_multisensor_motion_template_2
+  - sensor.aeotec_multisensor_motion_template_usb
   - sensor.aeotec_zw100_multisensor_6_usb_luminance
   - sensor.aeotec_zw100_multisensor_6_usb_relative_humidity
   - sensor.aeotec_zw100_multisensor_6_usb_temperature
@@ -246,9 +247,7 @@ overview:
   - switch.air_conditioner
   - sensor.netatmo_outdoor_temperature
   - sensor.netatmo_outdoor_humidity
-  - sensor.aeotec_multisensor_motion_template_1
   - light.entry_light_level
-  - sensor.aeotec_multisensor_motion_template_2
   - sensor.garage_door_state
   - cover.the_bat_cave
   - vacuum.xiaomi_vacuum_cleaner 
@@ -274,8 +273,7 @@ bathroom_sensors:
   entities:
   - sensor.temperature_158d0001fead1f
   - sensor.humidity_158d0001fead1f
-
-
+  - binary_sensor.motion_sensor_158d00015a83dd
 
 zigbee_group:
   name: Xiaomi Switches
@@ -307,6 +305,7 @@ default_view:
   - group.door_sensors
   - group.jon
   - media_player.galaxy_s8
+  - group.motion_sensors
 
 alarm:
   name: Alarm Panel
@@ -360,3 +359,14 @@ batteries_view:
   - group.battery_alert
   - group.battery_status
   - group.ups
+
+motion_sensors:
+  name: Motion
+  icon: mdi:walk
+  entities:
+  - binary_sensor.motion_sensor_158d0001e08ece
+  - binary_sensor.motion_sensor_158d0001d92086
+  - sensor.ring_front_door_horseshoe_cct_last_motion
+  - sensor.aeotec_multisensor_motion_template_2
+  - sensor.aeotec_multisensor_motion_template_usb
+  - binary_sensor.motion_sensor_158d00015a83dd

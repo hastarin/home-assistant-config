@@ -326,3 +326,55 @@ zwave.entry_light:
   name:
   platform: zwave
   unique_id: node-9
+media_player.xboxone_2:
+  name:
+  platform: plex
+  unique_id: 32nj8vvaxawtk57j9kxkm63r
+binary_sensor.motion_sensor_158d0001e08ece:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001e08ece
+sensor.illumination_158d0001e08ece:
+  name:
+  platform: xiaomi_aqara
+  unique_id: lux158d0001e08ece
+zwave.aeotec_zw100_multisensor_6_2:
+  name:
+  platform: zwave
+  unique_id: node-10
+sensor.aeotec_zw100_multisensor_6_temperature_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594210697234
+binary_sensor.aeotec_zw100_multisensor_6_sensor_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594210680832
+sensor.aeotec_zw100_multisensor_6_luminance_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594210697266
+sensor.aeotec_zw100_multisensor_6_relative_humidity_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594210697298
+sensor.aeotec_zw100_multisensor_6_ultraviolet_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594210697650
+sensor.aeotec_zw100_multisensor_6_sourcenodeid_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594211745825
+sensor.aeotec_zw100_multisensor_6_burglar_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594211745953
+sensor.aeotec_zw100_multisensor_6_alarm_type_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594211745793
+sensor.aeotec_zw100_multisensor_6_alarm_level_2:
+  name:
+  platform: zwave
+  unique_id: 10-72057594211745809

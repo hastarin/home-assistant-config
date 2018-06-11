@@ -1,6 +1,0 @@
-notify:
-  - platform: telstra
-    name: sms
-    consumer_key: !secret telstra_consumer_key
-    consumer_secret: !secret telstra_consumer_secret
-    phone_number: !secret mobile_number

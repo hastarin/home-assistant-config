@@ -7,7 +7,7 @@ switch.wake_on_lan:
   friendly_name: Wake PC
   icon: mdi:monitor
 switch.garage_light_switch:
-  friendly_name: Garage
+  friendly_name: Garage Light
   icon: mdi:white-balance-iridescent
   google_assistant_type: light
 switch.air_conditioner:
@@ -35,18 +35,18 @@ switch.garage_door:
 fan.pure_hotcool_2:
   hidden: true
   google_assistant: false
-zwave.aeotec_zw100_multisensor_6:
-  friendly_name: Entry Sensor
+zwave.aeotec_zw100_multisensor_6_2:
+  friendly_name: Bedroom Sensor
 zwave.aeotec_zw100_multisensor_6_usb:
   friendly_name: Garage Sensor
-sensor.aeotec_zw100_multisensor_6_luminance:
-  friendly_name: Entry Luminance
-sensor.aeotec_zw100_multisensor_6_relative_humidity:
-  friendly_name: Entry Humidity
-sensor.aeotec_zw100_multisensor_6_temperature:
-  friendly_name: Entry Temperature
-sensor.aeotec_zw100_multisensor_6_ultraviolet:
-  friendly_name: Entry UV
+sensor.aeotec_zw100_multisensor_6_luminance_2:
+  friendly_name: Bedroom Luminance
+sensor.aeotec_zw100_multisensor_6_relative_humidity_2:
+  friendly_name: Bedroom Humidity
+sensor.aeotec_zw100_multisensor_6_temperature_2:
+  friendly_name: Bedroom Temperature
+sensor.aeotec_zw100_multisensor_6_ultraviolet_2:
+  friendly_name: Bedroom UV
 sensor.aeotec_zw100_multisensor_6_usb_luminance:
   friendly_name: Garage Luminance
 sensor.aeotec_zw100_multisensor_6_usb_relative_humidity:
@@ -73,9 +73,8 @@ binary_sensor.door_window_sensor_158d0001fd6e59:
   friendly_name: Door Sensor - Garage Rear
 binary_sensor.door_window_sensor_158d00020193e4:
   friendly_name: Door Sensor - Front
-zwave.glass_door:
-  friendly_name: Door Sensor - Glass Rear
 binary_sensor.glass_door_sensor:
+  friendly_name: Door Sensor - Glass Rear
   icon: mdi:glassdoor
 sensor.temperature_158d0001c2c208:
   friendly_name: Office Temperature
@@ -83,3 +82,5 @@ sensor.humidity_158d0001c2c208:
   friendly_name: Office Humidity
 cover.curtain_158d0001ef4394:
   friendly_name: Living Room Curtains
+binary_sensor.motion_sensor_158d0001e08ece:
+  friendly_name: Motion Sensor Entry
