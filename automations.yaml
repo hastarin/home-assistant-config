@@ -570,18 +570,20 @@
   - entity_id: vacuum.xiaomi_vacuum_cleaner
     platform: state
     to: 'off'
-- action:
-  - service: vacuum.turn_on
+- id: '1521148590273'
   alias: Vacuum while at work
-  condition:
-  - after: 08:00
-    before: '10:30'
-    condition: time
-  id: '1521148590273'
   trigger:
   - entity_id: device_tracker.jon_mobile
     platform: state
     to: Work
+  condition:
+  - after: 08:00
+    before: '10:30'
+    condition: time
+  action:
+  - data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+    service: vacuum.start
 - id: '1526219825995'
   alias: Jon Waking Up
   trigger:
@@ -767,7 +769,7 @@
       message: Enjoy your day.  Opening the garage door!
     service: tts.google_say
 - id: '1528705714166'
-  alias: Garage Door Close
+  alias: Garage Door Auto Close
   trigger:
   - entity_id: binary_sensor.motion_sensor_158d0001e08ece
     platform: state

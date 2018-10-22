@@ -224,7 +224,6 @@ jon:
   name: Jon
   entities:
   - binary_sensor.jon_is_home
-  - device_tracker.hast_s8_wifi
   - device_tracker.jon_mobile
   - binary_sensor.jon_sleeping
 

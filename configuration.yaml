@@ -29,20 +29,29 @@ history:
 recorder:
   purge_interval: 1
   purge_keep_days: 7
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+    entities:
+      - sun.sun # Don't record sun data
+      - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+      - sensor.date
 
 logbook: !include_dir_merge_named logbook/
 
 logger:
-  default: warn
+  default: error
   logs:
-    homeassistant.components.xiaomi_aqara: debug
-    homeassistant.components.vacuum.xiaomi_miio: debug
+    homeassistant.components.dyson: debug
+#    homeassistant.components.xiaomi_aqara: debug
+#    homeassistant.components.vacuum.xiaomi_miio: debug
 #    homeassistant.components.camera.ring: debug
 #    homeassistant.components.binary_sensor.ring: debug
 #    homeassistant.components.sensor.ring: debug
 #    homeassistant.components.sensor.dyson: debug
 #    homeassistant.components.fan.dyson: debug
-#    homeassistant.components.dyson: debug
 
 sun:
 
@@ -61,23 +70,14 @@ mqtt:
   discovery: true
   discovery_prefix: homeassistant
 
-#emulated_hue:
-#  host_ip: 192.168.1.10
-#  listen_port: 5000
-#  advertise_ip: 192.168.1.10
-#  advertise_port: 80
-#  expose_by_default: true
-#  exposed_domains:
-#    - light
-
 device_tracker:
-  - platform: netgear
-    host: 192.168.1.1
-    username: admin
-    password: !secret netgear_pwd
-    interval_seconds: 10
-    consider_home: 120
   - platform: owntracks
+#  - platform: netgear
+#    host: 192.168.1.1
+#    username: admin
+#    password: !secret netgear_pwd
+#    interval_seconds: 10
+#    consider_home: 120
 #  - platform: bluetooth_tracker
 
 ring:
@@ -107,18 +107,12 @@ dyson:
 fan:
   - platform: dyson
 
-ffmpeg:
-  ffmpeg_bin: /usr/bin/ffmpeg
-
 downloader:
   download_dir: /mnt/elements/downloads
 
 camera:
   - platform: ring
     name: Ring Video Doorbell
-#  - platform: ffmpeg
-#    name: Front Door Camera
-#    input: /mnt/elements/downloads/latest.mp4
   - platform: mjpeg
     name: Livingroom Camera
     mjpeg_url: http://127.0.0.1:8084/mjpeg
@@ -126,24 +120,6 @@ camera:
 shell_command:
   start_motion: sudo service motion start
   stop_motion: sudo service motion stop
-
-xiaomi_aqara:
-  discovery_retry: 5
-  gateways:
-    - key: !secret xiaomi_key
-
-switch:
-  - platform: flux
-    lights:
-      - light.bathroom
-      - light.bedroom
-      - light.office
-    name: Fluxer
-    start_colortemp: 1480
-    sunset_colortemp: 1200
-    stop_colortemp: 1000
-    mode: mired
-#    disable_brightness_adjust: False
 
 vacuum:
   - platform: xiaomi_miio
@@ -172,5 +148,12 @@ cloud:
         - zwave
 #      exclude_entities:
 
-influxdb:
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - mac: 78:11:dc:6c:8e:ce
+      key: !secret xiaomi_key
+      host: 192.168.1.155
+
+wemo:
 
