@@ -19,3 +19,4 @@ deps/
 OZW_Log.txt
 pyozw.sqlite
 openzwave-config/
+.storage/

@@ -13,6 +13,7 @@ lights:
   - light.laundry
   - light.guestroom
   - light.gateway_light_7811dc6c8ece
+  - light.rear
 
 overrides:
   name: Disable

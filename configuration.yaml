@@ -157,3 +157,6 @@ xiaomi_aqara:
 
 wemo:
 
+light:
+  platform: lifx
+  scan_interval: 10
