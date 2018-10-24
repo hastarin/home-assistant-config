@@ -28,6 +28,7 @@ garage_group:
   entities:
     - switch.garage_light_switch
     - cover.the_bat_cave
+    - camera.garage
 
 netatmo_indoor:
   name: Netatmo Indoor
@@ -200,6 +201,9 @@ cameras_view:
   entities:
   - camera.livingroom_camera
   - camera.last_ring_video
+  - camera.backyard
+  - camera.side
+  - camera.garage
 
 bedroom_sensors:
   name: Bedroom Sensors

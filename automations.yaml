@@ -540,36 +540,46 @@
     from: 'on'
     platform: state
     to: 'off'
-- action:
-  - data:
-      code: !secret alarm_code
-      entity_id: alarm_control_panel.home_alarm
-    service: alarm_control_panel.alarm_arm_home
+- id: '1516741880050'
   alias: Vacuum On with Alarm
+  trigger:
+  - entity_id: vacuum.xiaomi_vacuum_cleaner
+    platform: state
+    to: cleaning
   condition:
   - condition: state
     entity_id: alarm_control_panel.home_alarm
     state: armed_away
-  id: '1516741880050'
-  trigger:
-  - entity_id: vacuum.xiaomi_vacuum_cleaner
-    platform: state
-    to: 'on'
-- action:
+  action:
   - data:
       code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
-    service: alarm_control_panel.alarm_arm_away
+    service: alarm_control_panel.alarm_disarm
+  - delay: '5'
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_arm_home
+- id: '1516741880051'
   alias: Vacuum Off with Alarm
+  trigger:
+  - entity_id: vacuum.xiaomi_vacuum_cleaner
+    platform: state
+    to: docked
   condition:
   - condition: state
     entity_id: alarm_control_panel.home_alarm
     state: armed_home
-  id: '1516741880051'
-  trigger:
-  - entity_id: vacuum.xiaomi_vacuum_cleaner
-    platform: state
-    to: 'off'
+  action:
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_disarm
+  - delay: '5'
+  - data:
+      code: !secret alarm_code
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_arm_away
 - id: '1521148590273'
   alias: Vacuum while at work
   trigger:
@@ -722,11 +732,7 @@
   - condition: state
     entity_id: binary_sensor.jon_sleeping
     state: 'on'
-  action:
-  - data:
-      effect: night
-      entity_id: light.bedroom
-    service: light.turn_on
+  action: []
 - id: '1528695981619'
   alias: Bedroom No Movement
   trigger:
