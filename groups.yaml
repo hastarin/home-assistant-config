@@ -1,19 +1,18 @@
 lights:
   name: Lights
   entities:
-  - switch.fluxer
   - light.entry_light_level
   - light.bathroom
   - light.bedroom
   - light.kitchen
-  - light.dining_room
-  - light.living_room
+  - light.coffee_table
+  - light.dining_table
+  - light.rear
   - light.office
   - light.hall
   - light.laundry
   - light.guestroom
   - light.gateway_light_7811dc6c8ece
-  - light.rear
 
 overrides:
   name: Disable
@@ -130,8 +129,10 @@ a_living_room_panel:
   name: Controls
   control: hidden
   entities:
-  - light.living_room
-  - light.dining_room
+  - light.dining_table
+  - light.coffee_table
+  - light.kitchen
+  - light.rear
   - cover.curtain_158d0001ef4394
  
 living_room_view:

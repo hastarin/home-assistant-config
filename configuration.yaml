@@ -160,13 +160,3 @@ wemo:
 light:
   platform: lifx
   scan_interval: 10
-
-arlo:
-  username: !secret arlo_user
-  password: !secret arlo_pass
-
-ffmpeg:
-
-camera:
-  platform: arlo
-  ffmpeg_arguments: '-pred 1 -q:v 2'

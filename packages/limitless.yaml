@@ -11,12 +11,6 @@ light:
       - number: 2
         type: white
         name: Laundry
-      - number: 3
-        type: white
-        name: Dining Room
-      - number: 4
-        type: white
-        name: Living Room
     - host: 192.168.1.92
       version: 1
       port: 50000
@@ -33,4 +27,3 @@ light:
       - number: 4
         type: white
         name: Guestroom
-
