@@ -71,7 +71,7 @@ mqtt:
   discovery_prefix: homeassistant
 
 device_tracker:
-  - platform: owntracks
+#  - platform: owntracks
 #  - platform: netgear
 #    host: 192.168.1.1
 #    username: admin
@@ -80,9 +80,9 @@ device_tracker:
 #    consider_home: 120
 #  - platform: bluetooth_tracker
 
-ring:
-  username: !secret ring_user
-  password: !secret ring_pwd
+#ring:
+#  username: !secret ring_user
+#  password: !secret ring_pwd
 
 zwave:
   usb_path: /dev/ttyACM0
@@ -111,11 +111,11 @@ downloader:
   download_dir: /mnt/elements/downloads
 
 camera:
-  - platform: ring
-    name: Ring Video Doorbell
   - platform: mjpeg
     name: Livingroom Camera
     mjpeg_url: http://127.0.0.1:8084/mjpeg
+#  - platform: ring
+#    name: Ring Video Doorbell
 
 shell_command:
   start_motion: sudo service motion start

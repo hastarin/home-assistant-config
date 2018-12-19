@@ -41,7 +41,7 @@
   - entity_id: scene.all_off
     service: scene.turn_on
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
 - id: jon_sleeping
@@ -282,31 +282,37 @@
     from: 'off'
     platform: state
     to: 'on'
-- action:
-  - data:
-      entity_id: light.living_room
-    service: light.toggle
+- id: '1514769892807'
   alias: Double Switch Left
-  condition: []
-  id: '1514769892807'
   trigger:
   - event_data:
       click_type: single
       entity_id: binary_sensor.wall_switch_left_158d0001641a34
     event_type: click
     platform: event
-- action:
-  - data:
-      entity_id: light.dining_room
-    service: light.toggle
-  alias: Double Switch Right
   condition: []
-  id: '1514770297578'
+  action:
+  - data:
+      entity_id: light.kitchen
+    service: light.toggle
+  - data:
+      entity_id: light.coffee_table
+    service: light.toggle
+- id: '1514770297578'
+  alias: Double Switch Right
   trigger:
   - event_data:
       entity_id: binary_sensor.wall_switch_right_158d0001641a34
     event_type: click
     platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: light.dining_table
+    service: light.toggle
+  - data:
+      entity_id: light.rear
+    service: light.toggle
 - action:
   - data: {}
     service: script.living_room_dim
@@ -454,7 +460,7 @@
     to: disarmed
 - action:
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
   alias: Jon Arriving Home
@@ -497,7 +503,7 @@
     state: below_horizon
   action:
   - data:
-      brightness_pct: 20
+      brightness_pct: 10
       color_temp: 154
       entity_id: light.bathroom
     service: light.turn_on
@@ -552,12 +558,12 @@
     state: armed_away
   action:
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
   - delay: '5'
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_home
 - id: '1516741880051'
@@ -572,12 +578,12 @@
     state: armed_home
   action:
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
   - delay: '5'
   - data:
-      code: !secret alarm_code
+      code: 0403623824
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
 - id: '1521148590273'
