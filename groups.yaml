@@ -133,7 +133,7 @@ a_living_room_panel:
   - light.coffee_table
   - light.kitchen
   - light.rear
-  - cover.curtain_158d0001ef4394
+  - cover.curtain_158d0001ef4394_2
  
 living_room_view:
   name: Living Room
@@ -246,7 +246,7 @@ overview:
   control: hidden
   entities:
   - sensor.power_usage
-  - cover.curtain_158d0001ef4394
+  - cover.curtain_158d0001ef4394_2
   - sensor.netatmo_indoor_temperature
   - sensor.netatmo_indoor_humidity
   - switch.air_conditioner

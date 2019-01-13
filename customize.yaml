@@ -80,7 +80,7 @@ sensor.temperature_158d0001c2c208:
   friendly_name: Office Temperature
 sensor.humidity_158d0001c2c208:
   friendly_name: Office Humidity
-cover.curtain_158d0001ef4394:
+cover.curtain_158d0001ef4394_2:
   friendly_name: Living Room Curtains
 binary_sensor.motion_sensor_158d0001e08ece:
   friendly_name: Motion Sensor Entry

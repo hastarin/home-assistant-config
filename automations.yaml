@@ -288,7 +288,7 @@
   - event_data:
       click_type: single
       entity_id: binary_sensor.wall_switch_left_158d0001641a34
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -303,7 +303,7 @@
   trigger:
   - event_data:
       entity_id: binary_sensor.wall_switch_right_158d0001641a34
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
   condition: []
   action:
@@ -326,7 +326,7 @@
   - event_data:
       click_type: both
       entity_id: binary_sensor.wall_switch_both_158d0001641a34
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
 - action:
   - data: {}
@@ -341,7 +341,7 @@
   - event_data:
       click_type: both
       entity_id: binary_sensor.wall_switch_both_158d0001641a34
-    event_type: click
+    event_type: xiaomi_aqara.click
     platform: event
 - action:
   - data:
@@ -613,7 +613,7 @@
     entity_id: sensor.pws_solarradiation
   action:
   - data:
-      entity_id: cover.curtain_158d0001ef4394
+      entity_id: cover.curtain_158d0001ef4394_2
     service: cover.open_cover
 - id: '1526899238902'
   alias: Curtain Close Sunset
@@ -623,7 +623,7 @@
     platform: sun
   condition:
   - condition: state
-    entity_id: cover.curtain_158d0001ef4394
+    entity_id: cover.curtain_158d0001ef4394_2
     state: open
   - below: '23'
     condition: numeric_state
@@ -633,7 +633,7 @@
     entity_id: sensor.comparison_temperature
   action:
   - data:
-      entity_id: cover.curtain_158d0001ef4394
+      entity_id: cover.curtain_158d0001ef4394_2
     service: cover.close_cover
 - id: '1526900784652'
   alias: Curtain Close Cooling
@@ -647,7 +647,7 @@
     entity_id: sensor.comparison_temperature
   action:
   - data:
-      entity_id: cover.curtain_158d0001ef4394
+      entity_id: cover.curtain_158d0001ef4394_2
     service: cover.close_cover
 - id: '1526901262371'
   alias: Curtain Close Heating
@@ -657,14 +657,14 @@
     platform: numeric_state
   condition:
   - condition: state
-    entity_id: cover.curtain_158d0001ef4394
+    entity_id: cover.curtain_158d0001ef4394_2
     state: open
   - above: '0'
     condition: numeric_state
     entity_id: sensor.comparison_temperature
   action:
   - data:
-      entity_id: cover.curtain_158d0001ef4394
+      entity_id: cover.curtain_158d0001ef4394_2
     service: cover.close_cover
 - id: '1528691359944'
   alias: Entry Movement Day
