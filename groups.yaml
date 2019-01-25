@@ -231,7 +231,7 @@ jon:
   entities:
   - binary_sensor.jon_is_home
   - device_tracker.jon_mobile
-  - binary_sensor.jon_sleeping
+  - input_boolean.jon_sleeping
 
 laundry_group:
   name: Laundry

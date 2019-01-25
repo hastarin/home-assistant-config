@@ -160,3 +160,10 @@ wemo:
 light:
   platform: lifx
   scan_interval: 10
+
+input_boolean:
+  jon_sleeping:
+    name: Jon is Sleeping
+    initial: off
+    icon: mdi:sleep
+

@@ -41,7 +41,7 @@
   - entity_id: scene.all_off
     service: scene.turn_on
   - data:
-      code: 0403623824
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
 - id: jon_sleeping
@@ -50,7 +50,7 @@
   hide_entity: false
   trigger:
   - platform: state
-    entity_id: binary_sensor.jon_sleeping
+    entity_id: input_boolean.jon_sleeping
     from: 'off'
     to: 'on'
   condition:
@@ -357,7 +357,14 @@
   - above: '26'
     entity_id: sensor.netatmo_indoor_temperature
     platform: numeric_state
-- action:
+- id: '1515203883015'
+  alias: Alarm Triggered
+  trigger:
+  - entity_id: alarm_control_panel.home_alarm
+    platform: state
+    to: triggered
+  condition: []
+  action:
   - data:
       message: Alarm Triggered!
       title: ALARM!  Your alarm has been triggered.
@@ -367,15 +374,10 @@
       entity_id: group.all_lights
     service: light.turn_on
   - data:
+      gw_mac: 7811DC6C8ECE
       ringtone_id: 20
+      ringtone_vol: 100
     service: xiaomi_aqara.play_ringtone
-  alias: Alarm Triggered
-  condition: []
-  id: '1515203883015'
-  trigger:
-  - entity_id: alarm_control_panel.home_alarm
-    platform: state
-    to: triggered
 - action:
   - data:
       entity_id: alarm_control_panel.home_alarm
@@ -460,7 +462,7 @@
     to: disarmed
 - action:
   - data:
-      code: 0403623824
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
   alias: Jon Arriving Home
@@ -558,12 +560,12 @@
     state: armed_away
   action:
   - data:
-      code: 0403623824
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
   - delay: '5'
   - data:
-      code: 0403623824
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_home
 - id: '1516741880051'
@@ -578,12 +580,12 @@
     state: armed_home
   action:
   - data:
-      code: 0403623824
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_disarm
   - delay: '5'
   - data:
-      code: 0403623824
+      code: !secret alarm_code
       entity_id: alarm_control_panel.home_alarm
     service: alarm_control_panel.alarm_arm_away
 - id: '1521148590273'
@@ -603,7 +605,7 @@
 - id: '1526219825995'
   alias: Jon Waking Up
   trigger:
-  - entity_id: binary_sensor.jon_sleeping
+  - entity_id: input_boolean.jon_sleeping
     from: 'on'
     platform: state
     to: 'off'
@@ -701,7 +703,7 @@
     before: sunset
     condition: sun
   - condition: state
-    entity_id: binary_sensor.jon_sleeping
+    entity_id: input_boolean.jon_sleeping
     state: 'off'
   action:
   - data:
@@ -720,7 +722,7 @@
     entity_id: sun.sun
     state: below_horizon
   - condition: state
-    entity_id: binary_sensor.jon_sleeping
+    entity_id: input_boolean.jon_sleeping
     state: 'off'
   action:
   - data:
@@ -736,7 +738,7 @@
     to: motion detected
   condition:
   - condition: state
-    entity_id: binary_sensor.jon_sleeping
+    entity_id: input_boolean.jon_sleeping
     state: 'on'
   action: []
 - id: '1528695981619'
@@ -798,3 +800,23 @@
       entity_id: media_player.kitchen_speaker
       message: Welcome home.  Closing the garage door!
     service: tts.google_say
+- id: '1548314269286'
+  alias: Turn Off Jon Sleeping
+  trigger:
+  - platform: webhook
+    webhook_id: jon-sleeping-off
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.jon_sleeping
+    service: input_boolean.turn_off
+- id: '1548314269283'
+  alias: Turn On Jon Sleeping
+  trigger:
+  - platform: webhook
+    webhook_id: jon-sleeping-on
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.jon_sleeping
+    service: input_boolean.turn_on
