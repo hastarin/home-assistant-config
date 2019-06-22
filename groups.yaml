@@ -335,9 +335,9 @@ battery_status:
   - sensor.bathroom_temperature_battery
   - sensor.bedside_switch_battery
   - sensor.cube_158d0001038d6d_battery
-  - sensor.door_sensor__front_battery
-  - sensor.door_sensor__garage_rear_battery
-  - sensor.door_sensor__glass_rear_battery
+  - sensor.door_sensor_front_battery
+  - sensor.door_sensor_garage_rear_battery
+  - sensor.door_sensor_glass_rear_battery
   - sensor.entry_sensor_battery
   - sensor.garage_sensor_battery
   - sensor.insect_plug_battery

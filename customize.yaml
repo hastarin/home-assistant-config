@@ -70,7 +70,7 @@ cover.the_bat_cave:
 binary_sensor.motion_sensor_158d00015a83dd:
   friendly_name: Motion Sensor Bathroom
 binary_sensor.door_window_sensor_158d0001fd6e59:
-  friendly_name: Door Sensor - Garage Rear
+  friendly_name: Garage Rear Door
 binary_sensor.door_window_sensor_158d00020193e4:
   friendly_name: Door Sensor - Front
 binary_sensor.glass_door_sensor:

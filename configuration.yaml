@@ -7,6 +7,12 @@ homeassistant:
   time_zone: Australia/Melbourne
   customize: !include customize.yaml
   packages: !include_dir_named packages/
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+        - fd00::/8
 
 frontend:
   javascript_version: latest
@@ -16,7 +22,13 @@ config:
 # NOTE: Using nginx to front this
 # https://home-assistant.io/docs/ecosystem/nginx/
 http:
-  api_password: !secret http_password
+  cors_allowed_origins:
+    - https://google.com
+    - https://www.home-assistant.io
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
 
 updater:
 
@@ -26,6 +38,7 @@ conversation:
 
 history:
 
+#  db_url: !secret mdbconn
 recorder:
   purge_interval: 1
   purge_keep_days: 7
@@ -110,16 +123,16 @@ fan:
 downloader:
   download_dir: /mnt/elements/downloads
 
-camera:
-  - platform: mjpeg
-    name: Livingroom Camera
-    mjpeg_url: http://127.0.0.1:8084/mjpeg
+#camera:
+#  - platform: mjpeg
+#    name: Livingroom Camera
+#    mjpeg_url: http://127.0.0.1:8084/mjpeg
 #  - platform: ring
 #    name: Ring Video Doorbell
 
-shell_command:
-  start_motion: sudo service motion start
-  stop_motion: sudo service motion stop
+#shell_command:
+#  start_motion: sudo service motion start
+#  stop_motion: sudo service motion stop
 
 vacuum:
   - platform: xiaomi_miio

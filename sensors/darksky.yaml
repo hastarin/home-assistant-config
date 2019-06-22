@@ -1,0 +1,12 @@
+platform: darksky
+api_key: !secret darksky_key
+forecast:
+  - 0
+monitored_conditions:
+  - summary
+  - icon
+  - temperature
+  - humidity
+  - wind_speed
+  - wind_bearing
+  - uv_index

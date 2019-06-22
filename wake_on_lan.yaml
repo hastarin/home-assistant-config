@@ -1,4 +1,0 @@
-switch:
-  - platform: wake_on_lan
-    mac_address: !secret pc_mac
-    host: !secret pc_ip

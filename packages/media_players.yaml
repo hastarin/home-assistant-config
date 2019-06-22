@@ -1,6 +1,5 @@
 media_player:
   - platform: plex
-    host: 192.168.1.20
   - platform: onkyo
     host: 192.168.1.8
     name: Integra
