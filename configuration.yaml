@@ -15,7 +15,6 @@ homeassistant:
         - fd00::/8
 
 frontend:
-  javascript_version: latest
 
 config:
 
@@ -33,6 +32,8 @@ http:
 updater:
 
 discovery:
+  ignore:
+    - google_cast
 
 history:
 
@@ -156,10 +157,6 @@ xiaomi_aqara:
       host: 192.168.1.155
 
 wemo:
-
-light:
-  platform: lifx
-  scan_interval: 10
 
 input_boolean:
   jon_sleeping:
