@@ -34,8 +34,6 @@ updater:
 
 discovery:
 
-conversation:
-
 history:
 
 #  db_url: !secret mdbconn
@@ -69,7 +67,7 @@ logger:
 sun:
 
 tts:
-  - platform: google
+  - platform: google_translate
 
 ifttt:
   key: !secret ifttt_api
@@ -142,17 +140,6 @@ vacuum:
 cloud:
   alexa:
     filter:
-#      include_entities:
-      include_domains:
-        - switch
-        - light
-        - fan
-        - cover
-        - zwave
-#      exclude_entities:
-  google_actions:
-    filter:
-#      include_entities:
       include_domains:
         - switch
         - light
@@ -179,4 +166,10 @@ input_boolean:
     name: Jon is Sleeping
     initial: off
     icon: mdi:sleep
+
+system_health:
+
+ssdp:
+
+zeroconf:
 
