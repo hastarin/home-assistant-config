@@ -32,8 +32,6 @@ http:
 updater:
 
 discovery:
-  ignore:
-    - google_cast
 
 history:
 
@@ -56,7 +54,7 @@ logbook: !include_dir_merge_named logbook/
 logger:
   default: error
   logs:
-    homeassistant.components.dyson: debug
+    homeassistant.components.cast: debug
 #    homeassistant.components.xiaomi_aqara: debug
 #    homeassistant.components.vacuum.xiaomi_miio: debug
 #    homeassistant.components.camera.ring: debug
@@ -169,4 +167,6 @@ system_health:
 ssdp:
 
 zeroconf:
+
+cast:
 

@@ -209,7 +209,7 @@
       entity_id: media_player.kitchen_speaker
       language: en
       message: Your garage door is open
-    service: tts.google_say
+    service: tts.google_translate_say
   alias: Garage Door Open
   condition: []
   id: '1514460392129'
@@ -225,7 +225,7 @@
       entity_id: media_player.kitchen_speaker
       language: en
       message: Your garage door is closed
-    service: tts.google_say
+    service: tts.google_translate_say
   alias: Garage Door Close
   condition:
   - condition: state
@@ -250,7 +250,7 @@
       entity_id: media_player.kitchen_speaker
       language: en
       message: The glass door is open.
-    service: tts.google_say
+    service: tts.google_translate_say
   alias: Door Open - Rear Glass
   condition: []
   id: '1514691811019'
@@ -263,7 +263,7 @@
       entity_id: media_player.kitchen_speaker
       language: en
       message: The laundry door is open
-    service: tts.google_say
+    service: tts.google_translate_say
   alias: Door Open - Laundry
   condition: []
   id: '1514695326727'
@@ -495,7 +495,7 @@
   - data:
       entity_id: media_player.kitchen_speaker
       message: A water leak has been detected in the laundry please check on it immediately!
-    service: tts.google_say
+    service: tts.google_translate_say
   - data:
       entity_id: switch.plug_158d00019d0f86
     service: switch.turn_off
@@ -753,7 +753,7 @@
   - data:
       entity_id: media_player.kitchen_speaker
       message: Enjoy your day.  Opening the garage door!
-    service: tts.google_say
+    service: tts.google_translate_say
 - id: '1528705714166'
   alias: Garage Door Auto Close
   trigger:
@@ -771,7 +771,7 @@
   - data:
       entity_id: media_player.kitchen_speaker
       message: Welcome home.  Closing the garage door!
-    service: tts.google_say
+    service: tts.google_translate_say
 - id: '1548314269286'
   alias: Turn Off Jon Sleeping
   trigger:
