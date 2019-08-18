@@ -15,36 +15,10 @@ motion_office_timer:
 motion_entry_timer:
   sequence:
   - delay: 00:02:00
+  - data:
+      entity_id:
+      - light.entry_light_level
   - service: light.turn_off
-    data:
-      entity_id:
-      - light.entry_light_level
-motion_entry_bright:
-  sequence:
-  - service: script.turn_off
-    data:
-      entity_id: script.motion_entry_timer
-  - service: light.turn_on
-    data:
-      entity_id:
-      - light.entry_light_level
-      brightness: 255
-  - service: script.turn_on
-    data:
-      entity_id: script.motion_entry_timer
-motion_entry:
-  sequence:
-  - data:
-      entity_id: script.motion_entry_timer
-    service: script.turn_off
-  - data:
-      entity_id:
-      - light.entry_light_level
-      brightness: 85
-    service: light.turn_on
-  - data:
-      entity_id: script.motion_entry_timer
-    service: script.turn_on
 leaving:
   sequence:
   - service: light.turn_off

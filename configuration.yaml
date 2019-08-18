@@ -51,10 +51,10 @@ recorder:
 
 logbook: !include_dir_merge_named logbook/
 
-logger:
-  default: error
-  logs:
-    homeassistant.components.cast: debug
+# logger:
+#   default: error
+#   logs:
+#     homeassistant.components.cast: debug
 #    homeassistant.components.xiaomi_aqara: debug
 #    homeassistant.components.vacuum.xiaomi_miio: debug
 #    homeassistant.components.camera.ring: debug
@@ -105,6 +105,7 @@ group: !include groups.yaml
 
 script: !include scripts.yaml
 automation: !include automations.yaml
+automation old: !include secret_automations.yaml
 
 dyson:
   username: !secret dyson_user
@@ -161,6 +162,10 @@ input_boolean:
     name: Jon is Sleeping
     initial: off
     icon: mdi:sleep
+  guest_mode:
+    name: Guests Present
+    initial: off
+    icon: mdi:account-group
 
 system_health:
 
