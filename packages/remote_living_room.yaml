@@ -17,6 +17,7 @@ input_select:
     options:
 ### DO NOT REMOVE 'SELECT INPUT'
       - Select Input
+      - Use PC
       - nVidia Shield
       - Play XBox One
       - Control PS4

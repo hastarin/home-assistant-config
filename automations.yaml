@@ -69,7 +69,7 @@
     platform: state
     entity_id: updater.updater
   action:
-    service: notify.pb
+    service: notify.notify
     data:
       message: Update for Home Assistant is available.
 - id: zwave_heal
@@ -97,9 +97,6 @@
   - data:
       entity_id: light.office
     service: light.turn_on
-  - data:
-      entity_id: script.motion_office_timer
-    service: script.turn_off
   alias: Office Movement
   condition:
   - condition: state
@@ -150,22 +147,6 @@
       entity_id: binary_sensor.switch_158d0001d8dbde
     event_type: click
     platform: event
-- action:
-  - service: script.motion_office_timer
-  alias: Office No Movement
-  condition:
-  - condition: state
-    entity_id: input_boolean.disable_auto_motion
-    state: 'off'
-  - condition: state
-    entity_id: input_boolean.disable_auto_lights
-    state: 'off'
-  id: '1514331552883'
-  trigger:
-  - entity_id: binary_sensor.motion_sensor_158d0001d92086
-    from: 'on'
-    platform: state
-    to: 'off'
 - action:
   - data:
       entity_id: switch.air_conditioner
@@ -308,7 +289,7 @@
   - data:
       message: Alarm Triggered!
       title: ALARM!  Your alarm has been triggered.
-    service: notify.pb
+    service: notify.notify
   - data:
       brightness_pct: 100
       entity_id: group.all_lights
@@ -318,6 +299,10 @@
       ringtone_id: 20
       ringtone_vol: 100
     service: xiaomi_aqara.play_ringtone
+  - data:
+      message: Alarm Triggered!
+      title: ALARM!  Your alarm has been triggered.
+    service: notify.pb
 - action:
   - data:
       entity_id: alarm_control_panel.home_alarm
@@ -399,9 +384,6 @@
       color_temp: 370
       entity_id: light.bathroom
     service: light.turn_on
-  - data:
-      entity_id: script.motion_bathroom_timer
-    service: script.turn_off
 - id: '1515663327939'
   alias: Bathroom Movement Night
   trigger:
@@ -418,17 +400,22 @@
       color_temp: 154
       entity_id: light.bathroom
     service: light.turn_on
-  - data:
-      entity_id: script.motion_bathroom_timer
-    service: script.turn_off
-- action:
+- id: '1515663851708'
+  alias: Water Leak Detected
+  trigger:
+  - entity_id: binary_sensor.water_leak_sensor_158d0001c34822
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
   - data:
       entity_id: light.laundry
     service: light.turn_on
   - data:
       message: Water Leak!
       title: A water leak has been detected in the laundry.
-    service: notify.pb
+    service: notify.notify
   - data:
       entity_id: media_player.kitchen_speaker
       message: A water leak has been detected in the laundry please check on it immediately!
@@ -436,27 +423,10 @@
   - data:
       entity_id: switch.plug_158d00019d0f86
     service: switch.turn_off
-  alias: Water Leak Detected
-  condition: []
-  id: '1515663851708'
-  trigger:
-  - entity_id: binary_sensor.water_leak_sensor_158d0001c34822
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - service: script.motion_bathroom_timer
-  alias: Bathroom No Movement
-  condition:
-  - condition: state
-    entity_id: input_boolean.disable_auto_motion
-    state: 'off'
-  id: '1515664356977'
-  trigger:
-  - entity_id: binary_sensor.motion_sensor_158d00015a83dd
-    from: 'on'
-    platform: state
-    to: 'off'
+  - data:
+      message: Water Leak!
+      title: A water leak has been detected in the laundry.
+    service: notify.pb
 - id: '1521148590273'
   alias: Vacuum while at work
   trigger:
@@ -481,7 +451,7 @@
   condition:
   - above: '50'
     condition: numeric_state
-    entity_id: sensor.pws_solarradiation
+    entity_id: sensor.aeotec_zw100_multisensor_6_usb_ultraviolet
   action:
   - data:
       entity_id: cover.curtain_158d0001ef4394_2
@@ -714,3 +684,42 @@
       - 0.542
       - 0.392
     service: light.turn_on
+- id: '1566103182554'
+  alias: Entry No Movement
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001e08ece
+    for: 0:00:10
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.entry_light_level
+    service: light.turn_off
+- id: '1566104438413'
+  alias: Bathroom No Movement
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d00015a83dd
+    for: 0:0:10
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.bathroom
+    service: light.turn_off
+- id: '1566104567444'
+  alias: Office No Movement
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001d92086
+    for: 0:00:10
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.office
+    service: light.turn_off

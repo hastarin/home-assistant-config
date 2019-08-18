@@ -1,5 +1,5 @@
 platform: template
 sensors:
   comparison_temperature:
-    value_template: "{{ states('sensor.kitchen_temperature')|float - states('sensor.netatmo_outdoor_temperature')|float }}"
+    value_template: "{{ states('sensor.netatmo_indoor_temperature')|float - states('sensor.netatmo_outdoor_temperature')|float }}"
     friendly_name: "Temperature Difference"

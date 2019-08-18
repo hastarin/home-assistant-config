@@ -1,0 +1,6 @@
+notify:
+  - platform: html5
+    name: notify
+    vapid_pub_key: BD_g85Zv_bkdaZbRZpUbe492FwInW8Z6s2gKVTR3sQI97j2Rmmujj9mkHZ7U0o_NjqOlbdGqVx6lPzwCONcds-4
+    vapid_prv_key: qsEI-YUDR6n0zVyIu_OuK3NM-ey49ArfOom8Yz-LuUY
+    vapid_email: hastarin@gmail.com

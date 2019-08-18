@@ -103,7 +103,6 @@ sensor: !include_dir_list sensors/
 zone: !include_dir_list zones/
 group: !include groups.yaml
 
-script: !include scripts.yaml
 automation: !include automations.yaml
 automation old: !include secret_automations.yaml
 
