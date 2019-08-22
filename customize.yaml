@@ -84,3 +84,9 @@ cover.curtain_158d0001ef4394_2:
   friendly_name: Living Room Curtains
 binary_sensor.motion_sensor_158d0001e08ece:
   friendly_name: Motion Sensor Entry
+binary_sensor.wall_switch_left_158d0001e11835:
+  friendly_name: Curtain Wall Switch (Left)
+binary_sensor.wall_switch_right_158d0001e11835:
+  friendly_name: Curtain Wall Switch (Right)
+binary_sensor.wall_switch_both_158d0001e11835:
+  friendly_name: Curtain Wall Switch (Both)
