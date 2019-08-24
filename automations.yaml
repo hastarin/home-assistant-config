@@ -763,3 +763,18 @@
   - data:
       entity_id: cover.curtain_158d0001ef4394_2
     service: cover.stop_cover
+- id: '1566571059383'
+  alias: Integra Off
+  trigger:
+  - entity_id: media_player.integra
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - data:
+      brightness_pct: 30
+      entity_id: light.rear
+    service: light.turn_on
