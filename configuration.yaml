@@ -15,6 +15,7 @@ homeassistant:
         - fd00::/8
 
 frontend:
+  themes: !include_dir_merge_named themes/
 
 config:
 
@@ -51,15 +52,17 @@ recorder:
 
 logbook: !include_dir_merge_named logbook/
 
-# logger:
-#   default: error
-#   logs:
+logger:
+  default: error
+  logs:
+   homeassistant.components.camera.ring: debug
+   homeassistant.components.binary_sensor.ring: debug
+   homeassistant.components.sensor.ring: debug
+   homeassistant.componetns.lifx: debug
+   homeassistant.componetns.ring: debug
 #     homeassistant.components.cast: debug
 #    homeassistant.components.xiaomi_aqara: debug
 #    homeassistant.components.vacuum.xiaomi_miio: debug
-#    homeassistant.components.camera.ring: debug
-#    homeassistant.components.binary_sensor.ring: debug
-#    homeassistant.components.sensor.ring: debug
 #    homeassistant.components.sensor.dyson: debug
 #    homeassistant.components.fan.dyson: debug
 
@@ -74,30 +77,29 @@ ifttt:
 mqtt:
   broker: !secret mqtt_broker
   port: !secret mqtt_port
-  client_id: home-assistant-1
+  client_id: home-assistant-docker
   username: !secret mqtt_username
   password: !secret mqtt_pwd
   discovery: true
   discovery_prefix: homeassistant
 
 device_tracker:
-#  - platform: owntracks
-#  - platform: netgear
-#    host: 192.168.1.1
-#    username: admin
-#    password: !secret netgear_pwd
-#    interval_seconds: 10
-#    consider_home: 120
-#  - platform: bluetooth_tracker
+ - platform: netgear
+   host: 192.168.1.1
+   port: 80
+   username: admin
+   password: !secret netgear_pwd
+   interval_seconds: 10
+   consider_home: 120
+   devices:
+     - 30:07:4D:2E:D4:3D
+   new_device_defaults:
+     track_new_devices: false
+     hide_if_away: true
 
-#ring:
-#  username: !secret ring_user
-#  password: !secret ring_pwd
-
-zwave:
-  usb_path: /dev/ttyACM0
-  config_path: /home/homeassistant/.homeassistant/openzwave-config 
-  device_config: !include zwave_device_config.yaml
+ring:
+ username: !secret ring_user
+ password: !secret ring_pwd
 
 sensor: !include_dir_list sensors/
 zone: !include_dir_list zones/
@@ -117,8 +119,8 @@ dyson:
 fan:
   - platform: dyson
 
-downloader:
-  download_dir: /mnt/elements/downloads
+# downloader:
+#   download_dir: /mnt/elements/downloads
 
 #camera:
 #  - platform: mjpeg
@@ -155,6 +157,9 @@ xiaomi_aqara:
       host: 192.168.1.155
 
 wemo:
+  static:
+    - 192.168.1.164
+    - 192.168.1.188
 
 input_boolean:
   jon_sleeping:
@@ -174,3 +179,14 @@ zeroconf:
 
 cast:
 
+hacs:
+  token: !secret hacs_token
+  theme: true
+  python_script: true
+
+lifx:
+  light:
+    - broadcast: 192.168.1.134
+    - broadcast: 192.168.1.145
+    - broadcast: 192.168.1.165
+    - broadcast: 192.168.1.169

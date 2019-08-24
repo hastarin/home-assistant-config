@@ -21,3 +21,4 @@ pyozw.sqlite
 openzwave-config/
 .storage/
 .cloud/
+custom_components/hacs/

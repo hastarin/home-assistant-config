@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  ha:
+    image: homeassistant/home-assistant
+    environment:
+      TZ: Australia/Melbourne
+    volumes:
+      - ~/.homeassistant:/config
+    # network_mode: host
+    # restart: always
+    ports:
+      - 8123:8123
+      - 8300:8300
+      - 51827:51827

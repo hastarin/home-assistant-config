@@ -10,4 +10,5 @@ alert:
     can_acknowledge: True
     skip_first: True
     notifiers:
+      - notify
       - pb

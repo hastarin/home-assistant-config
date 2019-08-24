@@ -1,5 +1,6 @@
 sensor:
   - platform: nut
+    host: 192.168.1.10
     resources:
       - ups.status
       - ups.load
