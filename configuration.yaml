@@ -77,11 +77,17 @@ ifttt:
 mqtt:
   broker: !secret mqtt_broker
   port: !secret mqtt_port
-  client_id: home-assistant-docker
+  client_id: ha-docker
   username: !secret mqtt_username
   password: !secret mqtt_pwd
   discovery: true
   discovery_prefix: homeassistant
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 device_tracker:
  - platform: netgear
@@ -139,15 +145,6 @@ vacuum:
     token: !secret roborock_token
 
 cloud:
-  alexa:
-    filter:
-      include_domains:
-        - switch
-        - light
-        - fan
-        - cover
-        - zwave
-#      exclude_entities:
 
 xiaomi_aqara:
   discovery_retry: 5

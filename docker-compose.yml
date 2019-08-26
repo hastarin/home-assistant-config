@@ -8,8 +8,34 @@ services:
     volumes:
       - ~/.homeassistant:/config
     # network_mode: host
-    # restart: always
+    restart: always
     ports:
-      - 8123:8123
-      - 8300:8300
-      - 51827:51827
+      - 8123:8123 # Web interface
+      - 8300:8300 # Emulated Hue Bridge
+      - 51827:51827 # HomeKit
+
+  letsencrypt:
+    image: linuxserver/letsencrypt
+    container_name: letsencrypt
+    cap_add:
+      - NET_ADMIN
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Australia/Melbourne
+      URL: hastarin.com
+      SUBDOMAINS: wildcard
+      VALIDATION: dns
+      DNSPLUGIN: cloudflare #optional
+      # DUCKDNSTOKEN: token #optional
+      EMAIL: hastarin@gmail.com #optional
+      DHLEVEL: 2048 #optional
+      # ONLY_SUBDOMAINS: 0 #optional
+      # EXTRA_DOMAINS: extradomains #optional
+      # STAGING: 0 #optional
+    volumes:
+      - ~/.homeassistant/letsencrypt:/config
+    ports:
+      - 443:443
+      # - 80:80 #optional
+    restart: unless-stopped
