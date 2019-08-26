@@ -1,15 +1,11 @@
-version: '3.7'
+version: '3'
 
 services:
   ha:
-    image: homeassistant/home-assistant
+    image: homeassistant/raspberrypi4-homeassistant
     environment:
       TZ: Australia/Melbourne
     volumes:
       - ~/.homeassistant:/config
-    # network_mode: host
-    # restart: always
-    ports:
-      - 8123:8123
-      - 8300:8300
-      - 51827:51827
+    network_mode: host
+    restart: always

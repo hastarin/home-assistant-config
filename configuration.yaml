@@ -139,14 +139,14 @@ vacuum:
     token: !secret roborock_token
 
 cloud:
-  alexa:
-    filter:
-      include_domains:
-        - switch
-        - light
-        - fan
-        - cover
-        - zwave
+#  alexa:
+#    filter:
+#      include_domains:
+#        - switch
+#        - light
+#        - fan
+#        - cover
+#        - zwave
 #      exclude_entities:
 
 xiaomi_aqara:
@@ -157,9 +157,9 @@ xiaomi_aqara:
       host: 192.168.1.155
 
 wemo:
-  static:
-    - 192.168.1.164
-    - 192.168.1.188
+#  static:
+#    - 192.168.1.164
+#    - 192.168.1.188
 
 input_boolean:
   jon_sleeping:
@@ -185,8 +185,8 @@ hacs:
   python_script: true
 
 lifx:
-  light:
-    - broadcast: 192.168.1.134
-    - broadcast: 192.168.1.145
-    - broadcast: 192.168.1.165
-    - broadcast: 192.168.1.169
+#  light:
+#    - broadcast: 192.168.1.134
+#    - broadcast: 192.168.1.145
+#    - broadcast: 192.168.1.165
+#    - broadcast: 192.168.1.169
