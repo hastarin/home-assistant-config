@@ -23,7 +23,6 @@ overrides:
 
 garage_group:
   name: Garage Switches
-  control: hidden
   entities:
     - switch.garage_light_switch
     - cover.the_bat_cave
@@ -87,7 +86,6 @@ wunderground:
 bedroom:
   name: Bedroom
   icon: mdi:hotel
-  view: true
   entities:
   - light.bedroom
   - switch.air_conditioner
@@ -105,7 +103,6 @@ office_sensors:
 
 office_view:
   name: Office
-  view: true
   icon: mdi:desktop-mac
   entities:
   - light.office
@@ -127,7 +124,6 @@ dyson_fan:
 
 a_living_room_panel:
   name: Controls
-  control: hidden
   entities:
   - light.dining_table
   - light.coffee_table
@@ -138,7 +134,6 @@ a_living_room_panel:
 living_room_view:
   name: Living Room
   icon: mdi:sofa
-  view: yes
   entities:
   - group.a_living_room_panel
   - camera.livingroom_camera
@@ -155,14 +150,12 @@ living_room_view:
 bathroom_view:
   name: Bathroom
   icon: mdi:human-male-female
-  view: yes
   entities:
   - light.bathroom
   - group.bathroom_sensors
 
 garage:
   name: Garage
-  view: true
   icon: mdi:garage
   entities:
     - group.garage_group
@@ -171,7 +164,6 @@ garage:
 laundry_view:
   name: Laundry
   icon: mdi:washing-machine
-  view: yes
   entities:
   - group.laundry_group
 
@@ -185,7 +177,6 @@ xiaomi_gateway:
 weather_view:
   name: Weather
   icon: mdi:cloud
-  view: yes
   entities:
   - group.ring
   - group.netatmo_indoor
@@ -198,7 +189,6 @@ weather_view:
 cameras_view:
   name: Cameras
   icon: mdi:camera
-  view: yes
   entities:
   - camera.livingroom_camera
   - camera.last_ring_video
@@ -235,7 +225,6 @@ jon:
 
 laundry_group:
   name: Laundry
-  control: hidden
   entities:
   - switch.plug_158d00019d0f86
   - binary_sensor.door_window_sensor_158d0001c2e60e
@@ -243,7 +232,6 @@ laundry_group:
   
 overview:
   name: ' Overview'
-  control: hidden
   entities:
   - sensor.power_usage
   - cover.curtain_158d0001ef4394_2
@@ -302,7 +290,6 @@ door_sensors:
 default_view:
   name: Home
   icon: mdi:home
-  view: yes
   entities:
   - group.alarm
   - group.lights
@@ -319,7 +306,6 @@ alarm:
 
 automation:
   name: Automation
-  view: yes
   icon: mdi:auto-fix
   entities:
   - group.all_scenes
@@ -359,7 +345,6 @@ battery_status:
 batteries_view:
   name: Batteries
   icon: mdi:battery-charging
-  view: true
   entities:
   - group.battery_alert
   - group.battery_status

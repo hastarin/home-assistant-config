@@ -33,8 +33,6 @@ updater:
 
 discovery:
 
-history:
-
 #  db_url: !secret mdbconn
 recorder:
   purge_interval: 1
@@ -51,10 +49,11 @@ recorder:
 
 logbook: !include_dir_merge_named logbook/
 
-# logger:
-#   default: error
-#   logs:
-#     homeassistant.components.cast: debug
+logger:
+  default: error
+  logs:
+    homeassistant.components.dyson: debug
+#    homeassistant.components.cast: debug
 #    homeassistant.components.xiaomi_aqara: debug
 #    homeassistant.components.vacuum.xiaomi_miio: debug
 #    homeassistant.components.camera.ring: debug
@@ -116,9 +115,13 @@ dyson:
 
 fan:
   - platform: dyson
+  - platform: xiaomi_miio
+    host: 192.168.1.199
+    token: !secret purifier2s_token
+    model: zhimi.airpurifier.mc1
 
-downloader:
-  download_dir: /mnt/elements/downloads
+#downloader:
+#  download_dir: /mnt/elements/downloads
 
 #camera:
 #  - platform: mjpeg

@@ -1,0 +1,16 @@
+
+platform: template
+sensors:
+  xiaomi_aqi:
+    value_template: "{{ state_attr('fan.xiaomi_miio_device', 'aqi') }}"
+    unit_of_measurement: 'PM2.5'
+    friendly_name: "Air Purifier AQI"
+  xiaomi_temperature:
+    value_template: "{{ state_attr('fan.xiaomi_miio_device', 'temperature') }}"
+    unit_of_measurement: '°C'
+    friendly_name: "Air Purifier Temperature"
+  xiaomi_humidity:
+    value_template: "{{ state_attr('fan.xiaomi_miio_device', 'humidity') }}"
+    unit_of_measurement: '%'
+    friendly_name: "Air Purifier Humidity"
+    

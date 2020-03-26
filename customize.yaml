@@ -90,3 +90,5 @@ binary_sensor.wall_switch_right_158d0001e11835:
   friendly_name: Curtain Wall Switch (Right)
 binary_sensor.wall_switch_both_158d0001e11835:
   friendly_name: Curtain Wall Switch (Both)
+fan.xiaomi_miio_device:
+  friendly_name: Air Purifier
